@@ -1,0 +1,1183 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 262144 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2627), pid=9817, tid=0x00007f6d4d3ff700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_121-b13) (build 1.8.0_121-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.121-b13 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f6d54071000):  JavaThread "pool-6-thread-5" [_thread_in_vm, id=11681, stack(0x00007f6d4d2ff000,0x00007f6d4d400000)]
+
+Stack: [0x00007f6d4d2ff000,0x00007f6d4d400000],  sp=0x00007f6d4d3f70d0,  free space=992k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xac703a]  VMError::report_and_die()+0x2ba
+V  [libjvm.so+0x4fc7eb]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8b
+V  [libjvm.so+0x923c43]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x103
+V  [libjvm.so+0x924199]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x91e4aa]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0xac2d99]  VirtualSpace::expand_by(unsigned long, bool)+0x199
+V  [libjvm.so+0x8a2666]  VirtualSpaceList::expand_node_by(VirtualSpaceNode*, unsigned long, unsigned long)+0x76
+V  [libjvm.so+0x8a5480]  VirtualSpaceList::expand_by(unsigned long, unsigned long)+0xf0
+V  [libjvm.so+0x8a5613]  VirtualSpaceList::get_new_chunk(unsigned long, unsigned long, unsigned long)+0xb3
+V  [libjvm.so+0x8a7162]  SpaceManager::grow_and_allocate(unsigned long)+0x2d2
+V  [libjvm.so+0x8a736b]  SpaceManager::allocate_work(unsigned long)+0x14b
+V  [libjvm.so+0x8a73fc]  SpaceManager::allocate(unsigned long)+0x7c
+V  [libjvm.so+0x8a764e]  Metaspace::allocate(ClassLoaderData*, unsigned long, bool, MetaspaceObj::Type, Thread*)+0x17e
+V  [libjvm.so+0x8b068c]  Method::allocate(ClassLoaderData*, int, AccessFlags, InlineTableSizes*, ConstMethod::MethodType, Thread*)+0x8c
+V  [libjvm.so+0x45f58f]  ClassFileParser::parse_method(bool, AccessFlags*, Thread*)+0x173f
+V  [libjvm.so+0x45fd23]  ClassFileParser::parse_methods(bool, AccessFlags*, bool*, bool*, Thread*)+0x293
+V  [libjvm.so+0x460baa]  ClassFileParser::parseClassFile(Symbol*, ClassLoaderData*, Handle, KlassHandle, GrowableArray<Handle>*, TempNewSymbol&, bool, Thread*)+0xcca
+V  [libjvm.so+0xa3734f]  SystemDictionary::resolve_from_stream(Symbol*, Handle, Handle, ClassFileStream*, bool, Thread*)+0x14f
+V  [libjvm.so+0x710f7e]  jvm_define_class_common(JNIEnv_*, char const*, _jobject*, signed char const*, int, _jobject*, char const*, unsigned char, Thread*)+0x2ae
+V  [libjvm.so+0x715a51]  JVM_DefineClassWithSource+0xe1
+C  [libjava.so+0xebb5]  Java_java_lang_ClassLoader_defineClass1+0x155
+J 310  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class; (0 bytes) @ 0x00007f6d891b918b [0x00007f6d891b9080+0x10b]
+J 8704 C2 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x00007f6d8aad3a2c [0x00007f6d8aad3520+0x50c]
+J 15812 C2 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007f6d8bbe8050 [0x00007f6d8bbe7020+0x1030]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x690dd6]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x1056
+V  [libjvm.so+0x72a09c]  JVM_DoPrivileged+0x27c
+J 152  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007f6d8914f1d5 [0x00007f6d8914f100+0xd5]
+J 4698 C2 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007f6d8a077f70 [0x00007f6d8a077ee0+0x90]
+J 4356 C2 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x00007f6d89fd4a84 [0x00007f6d89fd4680+0x404]
+J 8703 C2 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007f6d8a990a60 [0x00007f6d8a990a20+0x40]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x690dd6]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x1056
+V  [libjvm.so+0x6912e1]  JavaCalls::call_virtual(JavaValue*, KlassHandle, Symbol*, Symbol*, JavaCallArguments*, Thread*)+0x321
+V  [libjvm.so+0x691736]  JavaCalls::call_virtual(JavaValue*, Handle, KlassHandle, Symbol*, Symbol*, Handle, Thread*)+0x56
+V  [libjvm.so+0xa3c7a0]  SystemDictionary::load_instance_class(Symbol*, Handle, Thread*)+0x3f0
+V  [libjvm.so+0xa3b6ec]  SystemDictionary::resolve_instance_class_or_null(Symbol*, Handle, Handle, Thread*)+0x78c
+V  [libjvm.so+0xa3cbc3]  SystemDictionary::resolve_or_fail(Symbol*, Handle, Handle, bool, Thread*)+0x33
+V  [libjvm.so+0x4f3728]  ConstantPool::klass_at_impl(constantPoolHandle, int, Thread*)+0x158
+V  [libjvm.so+0x685331]  InterpreterRuntime::_new(JavaThread*, ConstantPool*, int)+0x71
+j  scala.collection.immutable.StringLike$class.r(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Lscala/util/matching/Regex;+0
+j  scala.collection.immutable.StringOps.r(Lscala/collection/Seq;)Lscala/util/matching/Regex;+2
+j  scala.collection.immutable.StringLike$class.r(Lscala/collection/immutable/StringLike;)Lscala/util/matching/Regex;+4
+j  scala.collection.immutable.StringOps.r()Lscala/util/matching/Regex;+1
+j  scala.tools.nsc.settings.ScalaVersion$.<init>()V+160
+j  scala.tools.nsc.settings.ScalaVersion$.<clinit>()V+3
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x690dd6]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x1056
+V  [libjvm.so+0x642be7]  InstanceKlass::call_class_initializer_impl(instanceKlassHandle, Thread*)+0xd7
+V  [libjvm.so+0x6451fc]  InstanceKlass::initialize_impl(instanceKlassHandle, Thread*)+0x1ac
+V  [libjvm.so+0x6455c1]  InstanceKlass::initialize(Thread*)+0x41
+V  [libjvm.so+0x7f3c2f]  LinkResolver::resolve_field(fieldDescriptor&, KlassHandle, Symbol*, Symbol*, KlassHandle, Bytecodes::Code, bool, bool, Thread*)+0x4df
+V  [libjvm.so+0x7f3e95]  LinkResolver::resolve_field_access(fieldDescriptor&, constantPoolHandle, int, Bytecodes::Code, Thread*)+0x245
+V  [libjvm.so+0x688d15]  InterpreterRuntime::resolve_get_put(JavaThread*, Bytecodes::Code)+0x125
+j  scala.tools.nsc.settings.ScalaSettings$class.$init$(Lscala/tools/nsc/settings/MutableSettings;)V+791
+j  scala.tools.nsc.settings.MutableSettings.<init>(Lscala/Function1;)V+22
+j  scala.tools.nsc.Settings.<init>(Lscala/Function1;)V+2
+j  scala.tools.nsc.Driver.process([Ljava/lang/String;)V+12
+j  scala.tools.nsc.Main.process([Ljava/lang/String;)V+4
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x690dd6]  JavaCalls::call_helper(JavaValue*, methodHandle*, JavaCallArguments*, Thread*)+0x1056
+V  [libjvm.so+0x99c357]  Reflection::invoke(instanceKlassHandle, methodHandle, Handle, bool, objArrayHandle, BasicType, objArrayHandle, bool, Thread*)+0x5d7
+V  [libjvm.so+0x99fa67]  Reflection::invoke_method(oopDesc*, Handle, objArrayHandle, Thread*)+0x147
+V  [libjvm.so+0x72447b]  JVM_InvokeMethod+0x26b
+j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+56
+j  sbt.compiler.RawCompiler.apply(Lscala/collection/Seq;Lscala/collection/Seq;Ljava/io/File;Lscala/collection/Seq;)V+195
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1$$anonfun$apply$2.apply(Ljava/io/File;)V+119
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1$$anonfun$apply$2.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1.apply(Ljava/io/File;)V+129
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.AnalyzingCompiler$.compileSources(Lscala/collection/Iterable;Ljava/io/File;Lscala/collection/Iterable;Ljava/lang/String;Lsbt/compiler/RawCompiler;Lsbt/Logger;)V+30
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2$$anonfun$apply$mcV$sp$1.apply(Ljava/io/File;)V+131
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2$$anonfun$apply$mcV$sp$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2.apply$mcV$sp()V+11
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2.apply()V+1
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2.apply()Ljava/lang/Object;+1
+j  sbt.BufferedLogger.bufferQuietly(Lscala/Function0;)Ljava/lang/Object;+5
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1.apply(Ljava/io/File;)V+96
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.IvyComponentCompiler.sbt$compiler$IvyComponentCompiler$$compileAndInstall(Ljava/lang/String;)V+12
+j  sbt.compiler.IvyComponentCompiler$$anonfun$apply$1.apply$mcV$sp()V+8
+j  sbt.IfMissing$Define.apply()V+4
+j  sbt.ComponentManager.sbt$ComponentManager$$createAndCache$1(Ljava/lang/String;Lsbt/IfMissing;)Lscala/collection/Iterable;+50
+j  sbt.ComponentManager$$anonfun$sbt$ComponentManager$$fromGlobal$1$1.apply()Lscala/collection/Iterable;+46
+j  sbt.ComponentManager$$anonfun$sbt$ComponentManager$$fromGlobal$1$1.apply()Ljava/lang/Object;+1
+j  sbt.ComponentManager$$anon$1.call()Ljava/lang/Object;+4
+j  xsbt.boot.Locks$GlobalLock.withChannel$1(Ljava/nio/channels/FileChannel;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+61
+j  xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(ILjava/nio/channels/FileChannel;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+3
+j  xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+17
+j  xsbt.boot.Using$.withResource(Ljava/io/Closeable;Lscala/Function1;)Ljava/lang/Object;+2
+j  xsbt.boot.Using$.apply(Ljava/io/Closeable;Lscala/Function1;)Ljava/lang/Object;+2
+j  xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Ljava/util/concurrent/Callable;)Ljava/lang/Object;+40
+j  xsbt.boot.Locks$GlobalLock.withLock(Ljava/util/concurrent/Callable;)Ljava/lang/Object;+21
+...<more frames>...
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 310  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class; (0 bytes) @ 0x00007f6d891b9111 [0x00007f6d891b9080+0x91]
+J 8704 C2 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x00007f6d8aad3a2c [0x00007f6d8aad3520+0x50c]
+J 15812 C2 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007f6d8bbe8050 [0x00007f6d8bbe7020+0x1030]
+v  ~StubRoutines::call_stub
+J 152  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007f6d8914f163 [0x00007f6d8914f100+0x63]
+J 4698 C2 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007f6d8a077f70 [0x00007f6d8a077ee0+0x90]
+J 4356 C2 java.lang.ClassLoader.loadClass(Ljava/lang/String;Z)Ljava/lang/Class; (122 bytes) @ 0x00007f6d89fd4a84 [0x00007f6d89fd4680+0x404]
+J 8703 C2 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007f6d8a990a60 [0x00007f6d8a990a20+0x40]
+v  ~StubRoutines::call_stub
+j  scala.collection.immutable.StringLike$class.r(Lscala/collection/immutable/StringLike;Lscala/collection/Seq;)Lscala/util/matching/Regex;+0
+j  scala.collection.immutable.StringOps.r(Lscala/collection/Seq;)Lscala/util/matching/Regex;+2
+j  scala.collection.immutable.StringLike$class.r(Lscala/collection/immutable/StringLike;)Lscala/util/matching/Regex;+4
+j  scala.collection.immutable.StringOps.r()Lscala/util/matching/Regex;+1
+j  scala.tools.nsc.settings.ScalaVersion$.<init>()V+160
+j  scala.tools.nsc.settings.ScalaVersion$.<clinit>()V+3
+v  ~StubRoutines::call_stub
+j  scala.tools.nsc.settings.ScalaSettings$class.$init$(Lscala/tools/nsc/settings/MutableSettings;)V+791
+j  scala.tools.nsc.settings.MutableSettings.<init>(Lscala/Function1;)V+22
+j  scala.tools.nsc.Settings.<init>(Lscala/Function1;)V+2
+j  scala.tools.nsc.Driver.process([Ljava/lang/String;)V+12
+j  scala.tools.nsc.Main.process([Ljava/lang/String;)V+4
+v  ~StubRoutines::call_stub
+j  sun.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0
+j  sun.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100
+j  sun.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+56
+j  sbt.compiler.RawCompiler.apply(Lscala/collection/Seq;Lscala/collection/Seq;Ljava/io/File;Lscala/collection/Seq;)V+195
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1$$anonfun$apply$2.apply(Ljava/io/File;)V+119
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1$$anonfun$apply$2.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1.apply(Ljava/io/File;)V+129
+j  sbt.compiler.AnalyzingCompiler$$anonfun$compileSources$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.AnalyzingCompiler$.compileSources(Lscala/collection/Iterable;Ljava/io/File;Lscala/collection/Iterable;Ljava/lang/String;Lsbt/compiler/RawCompiler;Lsbt/Logger;)V+30
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2$$anonfun$apply$mcV$sp$1.apply(Ljava/io/File;)V+131
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2$$anonfun$apply$mcV$sp$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2.apply$mcV$sp()V+11
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2.apply()V+1
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1$$anonfun$apply$2.apply()Ljava/lang/Object;+1
+j  sbt.BufferedLogger.bufferQuietly(Lscala/Function0;)Ljava/lang/Object;+5
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1.apply(Ljava/io/File;)V+96
+j  sbt.compiler.IvyComponentCompiler$$anonfun$sbt$compiler$IvyComponentCompiler$$compileAndInstall$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.IO$.withTemporaryDirectory(Lscala/Function1;)Ljava/lang/Object;+7
+j  sbt.compiler.IvyComponentCompiler.sbt$compiler$IvyComponentCompiler$$compileAndInstall(Ljava/lang/String;)V+12
+j  sbt.compiler.IvyComponentCompiler$$anonfun$apply$1.apply$mcV$sp()V+8
+j  sbt.IfMissing$Define.apply()V+4
+j  sbt.ComponentManager.sbt$ComponentManager$$createAndCache$1(Ljava/lang/String;Lsbt/IfMissing;)Lscala/collection/Iterable;+50
+j  sbt.ComponentManager$$anonfun$sbt$ComponentManager$$fromGlobal$1$1.apply()Lscala/collection/Iterable;+46
+j  sbt.ComponentManager$$anonfun$sbt$ComponentManager$$fromGlobal$1$1.apply()Ljava/lang/Object;+1
+j  sbt.ComponentManager$$anon$1.call()Ljava/lang/Object;+4
+j  xsbt.boot.Locks$GlobalLock.withChannel$1(Ljava/nio/channels/FileChannel;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+61
+j  xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(ILjava/nio/channels/FileChannel;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+3
+j  xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+17
+j  xsbt.boot.Using$.withResource(Ljava/io/Closeable;Lscala/Function1;)Ljava/lang/Object;+2
+j  xsbt.boot.Using$.apply(Ljava/io/Closeable;Lscala/Function1;)Ljava/lang/Object;+2
+j  xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Ljava/util/concurrent/Callable;)Ljava/lang/Object;+40
+j  xsbt.boot.Locks$GlobalLock.withLock(Ljava/util/concurrent/Callable;)Ljava/lang/Object;+21
+j  xsbt.boot.Locks$.apply0(Ljava/io/File;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+41
+j  xsbt.boot.Locks$.apply(Ljava/io/File;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+14
+j  sbt.ComponentManager.lock(Ljava/io/File;Lscala/Function0;)Ljava/lang/Object;+14
+j  sbt.ComponentManager.lockGlobalCache(Lscala/Function0;)Ljava/lang/Object;+9
+j  sbt.ComponentManager.sbt$ComponentManager$$fromGlobal$1(Ljava/lang/String;Lsbt/IfMissing;)Lscala/collection/Iterable;+11
+j  sbt.ComponentManager$$anonfun$files$1$$anonfun$apply$2.apply()Lscala/collection/Iterable;+21
+j  sbt.ComponentManager$$anonfun$files$1$$anonfun$apply$2.apply()Ljava/lang/Object;+1
+j  sbt.ComponentManager.sbt$ComponentManager$$getOrElse$1(Lscala/Function0;Ljava/lang/String;)Lscala/collection/Iterable;+30
+j  sbt.ComponentManager$$anonfun$files$1.apply()Lscala/collection/Iterable;+16
+j  sbt.ComponentManager$$anonfun$files$1.apply()Ljava/lang/Object;+1
+j  sbt.ComponentManager$$anon$1.call()Ljava/lang/Object;+4
+j  xsbt.boot.Locks$GlobalLock.withChannel$1(Ljava/nio/channels/FileChannel;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+61
+j  xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(ILjava/nio/channels/FileChannel;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+3
+j  xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+17
+j  xsbt.boot.Using$.withResource(Ljava/io/Closeable;Lscala/Function1;)Ljava/lang/Object;+2
+j  xsbt.boot.Using$.apply(Ljava/io/Closeable;Lscala/Function1;)Ljava/lang/Object;+2
+j  xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Ljava/util/concurrent/Callable;)Ljava/lang/Object;+40
+j  xsbt.boot.Locks$GlobalLock.withLock(Ljava/util/concurrent/Callable;)Ljava/lang/Object;+21
+j  xsbt.boot.Locks$.apply0(Ljava/io/File;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+41
+j  xsbt.boot.Locks$.apply(Ljava/io/File;Ljava/util/concurrent/Callable;)Ljava/lang/Object;+14
+j  sbt.ComponentManager.lock(Ljava/io/File;Lscala/Function0;)Ljava/lang/Object;+14
+j  sbt.ComponentManager.lockLocalCache(Lscala/Function0;)Ljava/lang/Object;+11
+j  sbt.ComponentManager.files(Ljava/lang/String;Lsbt/IfMissing;)Lscala/collection/Iterable;+11
+j  sbt.ComponentManager.file(Ljava/lang/String;Lsbt/IfMissing;)Ljava/io/File;+3
+j  sbt.compiler.IvyComponentCompiler.apply()Ljava/io/File;+110
+j  sbt.compiler.ComponentCompiler$$anon$2.apply(Lxsbti/compile/ScalaInstance;Lsbt/Logger;)Ljava/io/File;+52
+j  sbt.compiler.AnalyzingCompiler.loader(Lsbt/Logger;)Ljava/net/URLClassLoader;+9
+j  sbt.compiler.AnalyzingCompiler.getInterfaceClass(Ljava/lang/String;Lsbt/Logger;)Ljava/lang/Class;+4
+j  sbt.compiler.AnalyzingCompiler.call(Ljava/lang/String;Ljava/lang/String;Lsbt/Logger;Lscala/collection/Seq;Lscala/collection/Seq;)Ljava/lang/Object;+3
+j  sbt.compiler.AnalyzingCompiler.newCachedCompiler(Lscala/collection/Seq;Lxsbti/compile/Output;Lxsbti/Logger;Lxsbti/Reporter;Z)Lxsbti/compile/CachedCompiler;+105
+j  sbt.compiler.AnalyzingCompiler.newCachedCompiler([Ljava/lang/String;Lxsbti/compile/Output;Lxsbti/Logger;Lxsbti/Reporter;Z)Lxsbti/compile/CachedCompiler;+17
+j  sbt.compiler.CompilerCache$$anon$2.apply([Ljava/lang/String;Lxsbti/compile/Output;ZLxsbti/compile/CachedCompilerProvider;Lxsbti/Logger;Lxsbti/Reporter;)Lxsbti/compile/CachedCompiler;+9
+j  sbt.compiler.AnalyzingCompiler.compile(Lscala/collection/Seq;Lxsbti/compile/DependencyChanges;Lscala/collection/Seq;Lxsbti/compile/Output;Lxsbti/AnalysisCallback;Lxsbti/Reporter;Lxsbti/compile/GlobalsCache;Lsbt/Logger;Lscala/Option;)V+40
+j  sbt.compiler.MixedAnalyzingCompiler$$anonfun$compileScala$1$1.apply$mcV$sp()V+76
+j  sbt.compiler.MixedAnalyzingCompiler$$anonfun$compileScala$1$1.apply()V+1
+j  sbt.compiler.MixedAnalyzingCompiler$$anonfun$compileScala$1$1.apply()Ljava/lang/Object;+1
+j  sbt.compiler.MixedAnalyzingCompiler.timed(Ljava/lang/String;Lsbt/Logger;Lscala/Function0;)Ljava/lang/Object;+6
+j  sbt.compiler.MixedAnalyzingCompiler.compileScala$1(Lxsbti/compile/DependencyChanges;Lxsbti/AnalysisCallback;Lscala/collection/Seq;Lscala/collection/Seq;)V+108
+j  sbt.compiler.MixedAnalyzingCompiler.compile(Lscala/collection/immutable/Set;Lxsbti/compile/DependencyChanges;Lxsbti/AnalysisCallback;)V+215
+j  sbt.compiler.IC$$anonfun$compileInternal$1.apply(Lscala/collection/immutable/Set;Lxsbti/compile/DependencyChanges;Lxsbti/AnalysisCallback;)V+7
+j  sbt.compiler.IC$$anonfun$compileInternal$1.apply(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+13
+j  sbt.inc.IncrementalCompile$$anonfun$doCompile$1.apply(Lscala/collection/immutable/Set;Lxsbti/compile/DependencyChanges;)Lsbt/inc/Analysis;+35
+j  sbt.inc.IncrementalCompile$$anonfun$doCompile$1.apply(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+9
+j  sbt.inc.IncrementalCommon.cycle(Lscala/collection/immutable/Set;Lscala/collection/immutable/Set;Lxsbti/compile/DependencyChanges;Lsbt/inc/Analysis;Lscala/Function2;Lsbt/inc/ClassfileManager;I)Lsbt/inc/Analysis;+94
+j  sbt.inc.Incremental$$anonfun$1.apply(Lsbt/inc/ClassfileManager;)Lsbt/inc/Analysis;+26
+j  sbt.inc.Incremental$$anonfun$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  sbt.inc.Incremental$.manageClassfiles(Lsbt/inc/IncOptions;Lscala/Function1;)Ljava/lang/Object;+15
+j  sbt.inc.Incremental$.compile(Lscala/collection/immutable/Set;Lscala/Function1;Lsbt/inc/Analysis;Lsbt/inc/ReadStamps;Lscala/Function1;Lscala/Function2;Lsbt/Logger;Lsbt/inc/IncOptions;Lscala/math/Equiv;)Lscala/Tuple2;+144
+j  sbt.inc.IncrementalCompile$.apply(Lscala/collection/immutable/Set;Lscala/Function1;Lscala/Function3;Lsbt/inc/Analysis;Lscala/Function1;Lxsbti/compile/Output;Lsbt/Logger;Lsbt/inc/IncOptions;)Lscala/Tuple2;+82
+j  sbt.compiler.IC$.compileInternal(Lsbt/compiler/MixedAnalyzingCompiler;Lxsbti/Logger;Lscala/math/Equiv;)Lscala/Tuple2;+224
+j  sbt.compiler.IC$.incrementalCompile(Lsbt/compiler/AnalyzingCompiler;Lxsbti/compile/JavaCompiler;Lscala/collection/Seq;Lscala/collection/Seq;Lxsbti/compile/Output;Lxsbti/compile/GlobalsCache;Lscala/Option;Lscala/collection/Seq;Lscala/collection/Seq;Lsbt/inc/Analysis;Lscala/Option;Lscala/Function1;Lscala/Function1;Lxsbti/Reporter;Lxsbti/compile/CompileOrder;ZLsbt/inc/IncOptions;Lxsbti/Logger;)Lsbt/compiler/IC$Result;+105
+j  sbt.Compiler$.compile(Lsbt/Compiler$InputsWithPrevious;Lsbt/Logger;Lxsbti/Reporter;)Lsbt/compiler/IC$Result;+186
+j  sbt.Compiler$.compile(Lsbt/Compiler$InputsWithPrevious;Lsbt/Logger;)Lsbt/compiler/IC$Result;+31
+j  sbt.Defaults$.sbt$Defaults$$compileIncrementalTaskImpl(Lsbt/std/TaskStreams;Lsbt/Compiler$Inputs;Lsbt/Compiler$PreviousAnalysis;Lscala/Option;)Lsbt/compiler/IC$Result;+146
+j  sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Lscala/Tuple4;)Lsbt/compiler/IC$Result;+43
+j  sbt.Defaults$$anonfun$compileIncrementalTask$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+J 14164 C2 scala.Function1$$anonfun$compose$1.apply(Ljava/lang/Object;)Ljava/lang/Object; (20 bytes) @ 0x00007f6d8b975300 [0x00007f6d8b9752a0+0x60]
+J 15898 C1 sbt.$tilde$greater$$anonfun$$u2219$1.apply(Ljava/lang/Object;)Ljava/lang/Object; (27 bytes) @ 0x00007f6d895d4034 [0x00007f6d895d3f20+0x114]
+j  sbt.std.Transform$$anon$4.work(Ljava/lang/Object;)Lscala/util/Either;+5
+j  sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply()Lscala/util/Either;+14
+j  sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply()Ljava/lang/Object;+1
+J 15483 C1 sbt.ErrorHandling$.wideConvert(Lscala/Function0;)Lscala/util/Either; (131 bytes) @ 0x00007f6d8b9e57ec [0x00007f6d8b9e5640+0x1ac]
+j  sbt.Execute.work(Ljava/lang/Object;Lscala/Function0;Lsbt/CompletionService;)Lsbt/Completed;+14
+j  sbt.Execute$$anonfun$submit$1.apply()Lsbt/Completed;+20
+j  sbt.Execute$$anonfun$submit$1.apply()Ljava/lang/Object;+1
+j  sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply()Ljava/lang/Object;+4
+j  sbt.CompletionService$$anon$2.call()Ljava/lang/Object;+4
+J 14791 C1 java.util.concurrent.FutureTask.run()V (126 bytes) @ 0x00007f6d8b55f25c [0x00007f6d8b55f180+0xdc]
+j  java.util.concurrent.Executors$RunnableAdapter.call()Ljava/lang/Object;+4
+J 14791 C1 java.util.concurrent.FutureTask.run()V (126 bytes) @ 0x00007f6d8b55f25c [0x00007f6d8b55f180+0xdc]
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+95
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f6d54315800 JavaThread "Keep-Alive-Timer" daemon [_thread_blocked, id=11685, stack(0x00007f6d4cdf7000,0x00007f6d4cef8000)]
+  0x00007f6d54210000 JavaThread "Scala Presentation Compiler []" daemon [_thread_blocked, id=11682, stack(0x00007f6d4cffe000,0x00007f6d4d0ff000)]
+=>0x00007f6d54071000 JavaThread "pool-6-thread-5" [_thread_in_vm, id=11681, stack(0x00007f6d4d2ff000,0x00007f6d4d400000)]
+  0x00007f6d5406f000 JavaThread "pool-6-thread-4" [_thread_blocked, id=11680, stack(0x00007f6d4d400000,0x00007f6d4d501000)]
+  0x00007f6d5406d800 JavaThread "pool-6-thread-3" [_thread_blocked, id=11679, stack(0x00007f6d4d501000,0x00007f6d4d602000)]
+  0x00007f6d5406b000 JavaThread "pool-6-thread-2" [_thread_blocked, id=11678, stack(0x00007f6d4d602000,0x00007f6d4d703000)]
+  0x00007f6d54069800 JavaThread "pool-6-thread-1" [_thread_blocked, id=11677, stack(0x00007f6d4d703000,0x00007f6d4d804000)]
+  0x00007f6d54064800 JavaThread "ForkJoinPool-1-worker-1" daemon [_thread_blocked, id=11676, stack(0x00007f6d68205000,0x00007f6d68306000)]
+  0x00007f6d480a9000 JavaThread "netty-event-loop-4" [_thread_in_native, id=11675, stack(0x00007f6d880d6000,0x00007f6d881d7000)]
+  0x00007f6d480a3800 JavaThread "netty-event-loop-3" [_thread_blocked, id=11674, stack(0x00007f6d4df05000,0x00007f6d4e006000)]
+  0x00007f6d5cb40800 JavaThread "process reaper" daemon [_thread_blocked, id=11670, stack(0x00007f6d6a40f000,0x00007f6d6a448000)]
+  0x00007f6d5cb83000 JavaThread "netty-event-loop-2" [_thread_in_native, id=11668, stack(0x00007f6d4da04000,0x00007f6d4db05000)]
+  0x00007f6d54045800 JavaThread "play-dev-mode-akka.actor.default-dispatcher-4" [_thread_blocked, id=11666, stack(0x00007f6d68607000,0x00007f6d68708000)]
+  0x00007f6d5ca2e800 JavaThread "play-dev-mode-akka.actor.default-dispatcher-3" [_thread_blocked, id=11665, stack(0x00007f6d68506000,0x00007f6d68607000)]
+  0x00007f6d5c828800 JavaThread "play-dev-mode-scheduler-1" [_thread_blocked, id=11663, stack(0x00007f6d68104000,0x00007f6d68205000)]
+  0x00007f6d5c05b800 JavaThread "sbt-play-watch-service" daemon [_thread_blocked, id=11662, stack(0x00007f6d4f17f000,0x00007f6d4f280000)]
+  0x00007f6d5c6e2800 JavaThread "Thread-1" daemon [_thread_in_native, id=11661, stack(0x00007f6d4ef7d000,0x00007f6d4f07e000)]
+  0x00007f6d5c099800 JavaThread "pool-4-thread-9" [_thread_blocked, id=11660, stack(0x00007f6d4f07e000,0x00007f6d4f17f000)]
+  0x00007f6d5c099000 JavaThread "pool-4-thread-8" [_thread_blocked, id=11659, stack(0x00007f6d4ec7a000,0x00007f6d4ed7b000)]
+  0x00007f6d9aa14800 JavaThread "pool-4-thread-7" [_thread_blocked, id=11658, stack(0x00007f6d4ed7b000,0x00007f6d4ee7c000)]
+  0x00007f6d48055800 JavaThread "pool-4-thread-4" [_thread_in_native, id=11530, stack(0x00007f6d4ee7c000,0x00007f6d4ef7d000)]
+  0x00007f6d48048800 JavaThread "sbt-web-akka.actor.default-dispatcher-5" [_thread_blocked, id=11525, stack(0x00007f6d6b07d000,0x00007f6d6b17e000)]
+  0x00007f6d9a742000 JavaThread "sbt-web-scheduler-1" [_thread_blocked, id=11521, stack(0x00007f6d68708000,0x00007f6d68809000)]
+  0x00007f6d980db000 JavaThread "Service Thread" daemon [_thread_blocked, id=9865, stack(0x00007f6d88bfc000,0x00007f6d88cfd000)]
+  0x00007f6d980d8000 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=9864, stack(0x00007f6d88cfd000,0x00007f6d88dfe000)]
+  0x00007f6d980d6000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=9863, stack(0x00007f6d88dfe000,0x00007f6d88eff000)]
+  0x00007f6d980d4800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=9862, stack(0x00007f6d88eff000,0x00007f6d89000000)]
+  0x00007f6d980a1800 JavaThread "Finalizer" daemon [_thread_blocked, id=9861, stack(0x00007f6d9c211000,0x00007f6d9c312000)]
+  0x00007f6d9809d000 JavaThread "Reference Handler" daemon [_thread_blocked, id=9860, stack(0x00007f6d9c312000,0x00007f6d9c413000)]
+  0x00007f6d98009800 JavaThread "main" [_thread_blocked, id=9858, stack(0x00007f6da04f6000,0x00007f6da05f7000)]
+
+Other Threads:
+  0x00007f6d98095800 VMThread [stack: 0x00007f6d9c413000,0x00007f6d9c514000] [id=9859]
+  0x00007f6d980de800 WatcherThread [stack: 0x00007f6d88afb000,0x00007f6d88bfc000] [id=9866]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ def new generation   total 314560K, used 37984K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K,   1% used [0x00000000c0000000, 0x00000000c02f83b8, 0x00000000d1110000)
+  from space 34944K, 100% used [0x00000000d3330000, 0x00000000d5550000, 0x00000000d5550000)
+  to   space 34944K,   0% used [0x00000000d1110000, 0x00000000d1110000, 0x00000000d3330000)
+ tenured generation   total 699072K, used 167053K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  23% used [0x00000000d5550000, 0x00000000df873700, 0x00000000df873800, 0x0000000100000000)
+ Metaspace       used 103048K, capacity 103734K, committed 103808K, reserved 1134592K
+  class space    used 18065K, capacity 18262K, committed 18304K, reserved 1048576K
+
+Card table byte_map: [0x00007f6d9d092000,0x00007f6d9d293000] byte_map_base: 0x00007f6d9ca92000
+
+Polling page: 0x00007f6da0602000
+
+CodeCache: size=245760Kb used=41626Kb max_used=44746Kb free=204133Kb
+ bounds [0x00007f6d89000000, 0x00007f6d8bc20000, 0x00007f6d98000000]
+ total_blobs=13423 nmethods=12864 adapters=466
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 2487.513 Thread 0x00007f6d980d8000 nmethod 16263 0x00007f6d8a963e10 code [0x00007f6d8a963f60, 0x00007f6d8a964070]
+Event: 2487.514 Thread 0x00007f6d980d8000 16264       1       scala.collection.mutable.HashSet::seedvalue (5 bytes)
+Event: 2487.514 Thread 0x00007f6d980d8000 nmethod 16264 0x00007f6d8a8081d0 code [0x00007f6d8a808320, 0x00007f6d8a808430]
+Event: 2487.514 Thread 0x00007f6d980d8000 16265       1       scala.collection.mutable.HashSet::threshold (5 bytes)
+Event: 2487.514 Thread 0x00007f6d980d8000 nmethod 16265 0x00007f6d8a7e5e50 code [0x00007f6d8a7e5fa0, 0x00007f6d8a7e60b0]
+Event: 2487.515 Thread 0x00007f6d980d8000 16262       1       scala.collection.mutable.BitSet::elems (5 bytes)
+Event: 2487.515 Thread 0x00007f6d980d8000 nmethod 16262 0x00007f6d8b8d7110 code [0x00007f6d8b8d7260, 0x00007f6d8b8d7370]
+Event: 2487.522 Thread 0x00007f6d980d6000 nmethod 16260 0x00007f6d8a389690 code [0x00007f6d8a389840, 0x00007f6d8a38a1c8]
+Event: 2487.528 Thread 0x00007f6d980d8000 16266       1       scala.tools.nsc.settings.MutableSettings$StringSetting::v (5 bytes)
+Event: 2487.528 Thread 0x00007f6d980d8000 nmethod 16266 0x00007f6d8b8d6e10 code [0x00007f6d8b8d6f60, 0x00007f6d8b8d7070]
+
+GC Heap History (10 events):
+Event: 2168.935 GC heap before
+{Heap before GC invocations=23 (full 3):
+ def new generation   total 314560K, used 301518K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K, 100% used [0x00000000c0000000, 0x00000000d1110000, 0x00000000d1110000)
+  from space 34944K,  62% used [0x00000000d1110000, 0x00000000d2673af8, 0x00000000d3330000)
+  to   space 34944K,   0% used [0x00000000d3330000, 0x00000000d3330000, 0x00000000d5550000)
+ tenured generation   total 699072K, used 127243K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  18% used [0x00000000d5550000, 0x00000000dd192e80, 0x00000000dd193000, 0x0000000100000000)
+ Metaspace       used 78896K, capacity 79538K, committed 79744K, reserved 1116160K
+  class space    used 13711K, capacity 13884K, committed 13952K, reserved 1048576K
+Event: 2168.976 GC heap after
+Heap after GC invocations=24 (full 3):
+ def new generation   total 314560K, used 14955K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K,   0% used [0x00000000c0000000, 0x00000000c0000000, 0x00000000d1110000)
+  from space 34944K,  42% used [0x00000000d3330000, 0x00000000d41caf48, 0x00000000d5550000)
+  to   space 34944K,   0% used [0x00000000d1110000, 0x00000000d1110000, 0x00000000d3330000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 78896K, capacity 79538K, committed 79744K, reserved 1116160K
+  class space    used 13711K, capacity 13884K, committed 13952K, reserved 1048576K
+}
+Event: 2173.806 GC heap before
+{Heap before GC invocations=24 (full 3):
+ def new generation   total 314560K, used 294571K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K, 100% used [0x00000000c0000000, 0x00000000d1110000, 0x00000000d1110000)
+  from space 34944K,  42% used [0x00000000d3330000, 0x00000000d41caf48, 0x00000000d5550000)
+  to   space 34944K,   0% used [0x00000000d1110000, 0x00000000d1110000, 0x00000000d3330000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 78900K, capacity 79538K, committed 79744K, reserved 1116160K
+  class space    used 13711K, capacity 13884K, committed 13952K, reserved 1048576K
+Event: 2173.836 GC heap after
+Heap after GC invocations=25 (full 3):
+ def new generation   total 314560K, used 14573K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K,   0% used [0x00000000c0000000, 0x00000000c0000000, 0x00000000d1110000)
+  from space 34944K,  41% used [0x00000000d1110000, 0x00000000d1f4b640, 0x00000000d3330000)
+  to   space 34944K,   0% used [0x00000000d3330000, 0x00000000d3330000, 0x00000000d5550000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 78900K, capacity 79538K, committed 79744K, reserved 1116160K
+  class space    used 13711K, capacity 13884K, committed 13952K, reserved 1048576K
+}
+Event: 2314.120 GC heap before
+{Heap before GC invocations=25 (full 3):
+ def new generation   total 314560K, used 294189K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K, 100% used [0x00000000c0000000, 0x00000000d1110000, 0x00000000d1110000)
+  from space 34944K,  41% used [0x00000000d1110000, 0x00000000d1f4b640, 0x00000000d3330000)
+  to   space 34944K,   0% used [0x00000000d3330000, 0x00000000d3330000, 0x00000000d5550000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 78915K, capacity 79538K, committed 79744K, reserved 1116160K
+  class space    used 13712K, capacity 13884K, committed 13952K, reserved 1048576K
+Event: 2314.145 GC heap after
+Heap after GC invocations=26 (full 3):
+ def new generation   total 314560K, used 17417K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K,   0% used [0x00000000c0000000, 0x00000000c0000000, 0x00000000d1110000)
+  from space 34944K,  49% used [0x00000000d3330000, 0x00000000d4432490, 0x00000000d5550000)
+  to   space 34944K,   0% used [0x00000000d1110000, 0x00000000d1110000, 0x00000000d3330000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 78915K, capacity 79538K, committed 79744K, reserved 1116160K
+  class space    used 13712K, capacity 13884K, committed 13952K, reserved 1048576K
+}
+Event: 2443.011 GC heap before
+{Heap before GC invocations=26 (full 3):
+ def new generation   total 314560K, used 297033K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K, 100% used [0x00000000c0000000, 0x00000000d1110000, 0x00000000d1110000)
+  from space 34944K,  49% used [0x00000000d3330000, 0x00000000d4432490, 0x00000000d5550000)
+  to   space 34944K,   0% used [0x00000000d1110000, 0x00000000d1110000, 0x00000000d3330000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 80078K, capacity 80706K, committed 81024K, reserved 1116160K
+  class space    used 13931K, capacity 14124K, committed 14208K, reserved 1048576K
+Event: 2443.159 GC heap after
+Heap after GC invocations=27 (full 3):
+ def new generation   total 314560K, used 20740K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K,   0% used [0x00000000c0000000, 0x00000000c0000000, 0x00000000d1110000)
+  from space 34944K,  59% used [0x00000000d1110000, 0x00000000d2551350, 0x00000000d3330000)
+  to   space 34944K,   0% used [0x00000000d3330000, 0x00000000d3330000, 0x00000000d5550000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 80078K, capacity 80706K, committed 81024K, reserved 1116160K
+  class space    used 13931K, capacity 14124K, committed 14208K, reserved 1048576K
+}
+Event: 2486.554 GC heap before
+{Heap before GC invocations=27 (full 3):
+ def new generation   total 314560K, used 300356K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K, 100% used [0x00000000c0000000, 0x00000000d1110000, 0x00000000d1110000)
+  from space 34944K,  59% used [0x00000000d1110000, 0x00000000d2551350, 0x00000000d3330000)
+  to   space 34944K,   0% used [0x00000000d3330000, 0x00000000d3330000, 0x00000000d5550000)
+ tenured generation   total 699072K, used 134537K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  19% used [0x00000000d5550000, 0x00000000dd8b2790, 0x00000000dd8b2800, 0x0000000100000000)
+ Metaspace       used 102827K, capacity 103510K, committed 103808K, reserved 1134592K
+  class space    used 18039K, capacity 18230K, committed 18304K, reserved 1048576K
+Event: 2487.439 GC heap after
+Heap after GC invocations=28 (full 3):
+ def new generation   total 314560K, used 34944K [0x00000000c0000000, 0x00000000d5550000, 0x00000000d5550000)
+  eden space 279616K,   0% used [0x00000000c0000000, 0x00000000c0000000, 0x00000000d1110000)
+  from space 34944K, 100% used [0x00000000d3330000, 0x00000000d5550000, 0x00000000d5550000)
+  to   space 34944K,   0% used [0x00000000d1110000, 0x00000000d1110000, 0x00000000d3330000)
+ tenured generation   total 699072K, used 167053K [0x00000000d5550000, 0x0000000100000000, 0x0000000100000000)
+   the space 699072K,  23% used [0x00000000d5550000, 0x00000000df873700, 0x00000000df873800, 0x0000000100000000)
+ Metaspace       used 102827K, capacity 103510K, committed 103808K, reserved 1134592K
+  class space    used 18039K, capacity 18230K, committed 18304K, reserved 1048576K
+}
+
+Deoptimization events (10 events):
+Event: 2479.421 Thread 0x00007f6d54071000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f6d8a569a70 method=sbt.IvyLoggerInterface.verbose(Ljava/lang/String;)V @ 13
+Event: 2479.421 Thread 0x00007f6d54071000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f6d8baa4fa4 method=sbt.IvyLoggerInterface.verbose(Ljava/lang/String;)V @ 13
+Event: 2479.881 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d8b458b9c method=sun.util.logging.PlatformLogger.isLoggable(Lsun/util/logging/PlatformLogger$Level;)Z @ 18
+Event: 2479.936 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d89e81748 method=sun.util.logging.PlatformLogger.isLoggable(Lsun/util/logging/PlatformLogger$Level;)Z @ 18
+Event: 2480.630 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d8baef73c method=sun.util.logging.PlatformLogger.isLoggable(Lsun/util/logging/PlatformLogger$Level;)Z @ 18
+Event: 2480.783 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d8ae41b74 method=sun.util.logging.PlatformLogger.isLoggable(Lsun/util/logging/PlatformLogger$Level;)Z @ 18
+Event: 2482.519 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d8bb3854c method=sun.util.logging.PlatformLogger.isLoggable(Lsun/util/logging/PlatformLogger$Level;)Z @ 18
+Event: 2485.619 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d8ba61160 method=org.apache.ivy.core.IvyPatternHelper.substitute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String
+Event: 2485.635 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d89349c5c method=java.io.FileInputStream.close()V @ 36
+Event: 2485.825 Thread 0x00007f6d54071000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f6d8a274d78 method=java.util.Date.getTimeImpl()J @ 4
+
+Internal exceptions (10 events):
+Event: 2477.687 Thread 0x00007f6d480a3800 Exception <a 'java/lang/ArrayIndexOutOfBoundsException': 128> (0x00000000c7738ec0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/interpreter/interpreterRuntime.cpp, line 366]
+Event: 2477.883 Thread 0x00007f6d54069800 Exception <a 'java/io/FileNotFoundException'> (0x00000000c8056838) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 2479.122 Thread 0x00007f6d54071000 Exception <a 'java/io/FileNotFoundException'> (0x00000000ce4f7170) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 2484.099 Thread 0x00007f6d54071000 Implicit null exception at 0x00007f6d89cca06c to 0x00007f6d89cca7e7
+Event: 2484.099 Thread 0x00007f6d54071000 Exception <a 'java/lang/NullPointerException'> (0x00000000cf22bbb0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 2484.753 Thread 0x00007f6d54071000 Implicit null exception at 0x00007f6d89cca06c to 0x00007f6d89cca7e7
+Event: 2484.753 Thread 0x00007f6d54071000 Exception <a 'java/lang/NullPointerException'> (0x00000000cf4d6ec0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 2485.572 Thread 0x00007f6d54071000 Implicit null exception at 0x00007f6d89cca06c to 0x00007f6d89cca7e7
+Event: 2485.572 Thread 0x00007f6d54071000 Exception <a 'java/lang/NullPointerException'> (0x00000000cf564d58) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u121/8372/hotspot/src/share/vm/runtime/sharedRuntime.cpp, line 605]
+Event: 2485.619 Thread 0x00007f6d54071000 Implicit null exception at 0x00007f6d8ba591ac to 0x00007f6d8ba61125
+
+Events (10 events):
+Event: 2486.447 Thread 0x00007f6d980d8000 flushing nmethod 0x00007f6d8ba6ea50
+Event: 2486.447 Thread 0x00007f6d980d8000 flushing nmethod 0x00007f6d8bb6f610
+Event: 2486.553 Executing VM operation: GenCollectForAllocation
+Event: 2487.453 Executing VM operation: GenCollectForAllocation done
+Event: 2487.453 Executing VM operation: RevokeBias
+Event: 2487.477 Executing VM operation: RevokeBias done
+Event: 2487.478 Thread 0x00007f6d9809d000 DEOPT PACKING pc=0x00007f6d89ed7004 sp=0x00007f6d9c411970
+Event: 2487.488 Thread 0x00007f6d9809d000 DEOPT UNPACKING pc=0x00007f6d89047633 sp=0x00007f6d9c411648 mode 0
+Event: 2487.513 Thread 0x00007f6d980d8000 flushing nmethod 0x00007f6d892a6ad0
+Event: 2487.515 Thread 0x00007f6d980d8000 flushing nmethod 0x00007f6d89653c90
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 267984                             /usr/lib/jvm/java-8-oracle/jre/bin/java
+00600000-00601000 rw-p 00000000 08:01 267984                             /usr/lib/jvm/java-8-oracle/jre/bin/java
+022fe000-025ac000 rw-p 00000000 00:00 0                                  [heap]
+c0000000-1011e0000 rw-p 00000000 00:00 0 
+1011e0000-140000000 ---p 00000000 00:00 0 
+7f6d48000000-7f6d480af000 rw-p 00000000 00:00 0 
+7f6d480af000-7f6d4c000000 ---p 00000000 00:00 0 
+7f6d4c8e7000-7f6d4c8eb000 r--s 00031000 08:01 265506                     /home/vagrant/.ivy2/cache/jline/jline/jars/jline-2.12.1.jar
+7f6d4c8eb000-7f6d4c8f6000 r--s 00094000 08:01 265504                     /home/vagrant/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.4.jar
+7f6d4c8f6000-7f6d4ca76000 rw-p 00000000 00:00 0 
+7f6d4cab6000-7f6d4caf6000 ---p 00000000 00:00 0 
+7f6d4caf6000-7f6d4ccf6000 rw-p 00000000 00:00 0 
+7f6d4ccf6000-7f6d4ccf9000 ---p 00000000 00:00 0 
+7f6d4ccf9000-7f6d4cdf7000 rw-p 00000000 00:00 0 
+7f6d4cdf7000-7f6d4cdfa000 ---p 00000000 00:00 0 
+7f6d4cdfa000-7f6d4cef8000 rw-p 00000000 00:00 0                          [stack:11685]
+7f6d4cef8000-7f6d4cffe000 r--s 00d84000 08:01 265501                     /home/vagrant/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.7.jar
+7f6d4cffe000-7f6d4d001000 ---p 00000000 00:00 0 
+7f6d4d001000-7f6d4d2ff000 rw-p 00000000 00:00 0                          [stack:11682]
+7f6d4d2ff000-7f6d4d302000 ---p 00000000 00:00 0 
+7f6d4d302000-7f6d4d400000 rw-p 00000000 00:00 0                          [stack:11681]
+7f6d4d400000-7f6d4d403000 ---p 00000000 00:00 0 
+7f6d4d403000-7f6d4d501000 rw-p 00000000 00:00 0                          [stack:11680]
+7f6d4d501000-7f6d4d504000 ---p 00000000 00:00 0 
+7f6d4d504000-7f6d4d602000 rw-p 00000000 00:00 0                          [stack:11679]
+7f6d4d602000-7f6d4d605000 ---p 00000000 00:00 0 
+7f6d4d605000-7f6d4d703000 rw-p 00000000 00:00 0                          [stack:11678]
+7f6d4d703000-7f6d4d706000 ---p 00000000 00:00 0 
+7f6d4d706000-7f6d4da04000 rw-p 00000000 00:00 0                          [stack:11677]
+7f6d4da04000-7f6d4da07000 ---p 00000000 00:00 0 
+7f6d4da07000-7f6d4dd05000 rw-p 00000000 00:00 0                          [stack:11668]
+7f6d4dd05000-7f6d4df05000 rw-p 00000000 00:00 0 
+7f6d4df05000-7f6d4df08000 ---p 00000000 00:00 0 
+7f6d4df08000-7f6d4e206000 rw-p 00000000 00:00 0                          [stack:11674]
+7f6d4e206000-7f6d4e406000 rw-p 00000000 00:00 0 
+7f6d4e406000-7f6d4e606000 rw-p 00000000 00:00 0 
+7f6d4e606000-7f6d4e60a000 r--s 00026000 08:01 394265                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-doc_2.11/jars/play-doc_2.11-1.2.2.jar
+7f6d4e60a000-7f6d4e635000 r--s 001f5000 08:01 268862                     /home/vagrant/.ivy2/cache/com.google.guava/guava/bundles/guava-16.0.1.jar
+7f6d4e635000-7f6d4e681000 r--s 009b8000 08:01 394263                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-docs_2.11/jars/play-docs_2.11-2.5.10.jar
+7f6d4e681000-7f6d4e683000 r--s 0000d000 08:01 265430                     /home/vagrant/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar
+7f6d4e683000-7f6d4e68b000 r--s 00040000 08:01 268869                     /home/vagrant/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.0.1.jar
+7f6d4e68b000-7f6d4e690000 r--s 00026000 08:01 268868                     /home/vagrant/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.0.1.jar
+7f6d4e690000-7f6d4e691000 r--s 00001000 08:01 394185                     /home/vagrant/.ivy2/cache/oauth.signpost/signpost-commonshttp4/jars/signpost-commonshttp4-1.2.1.2.jar
+7f6d4e691000-7f6d4e694000 r--s 00009000 08:01 394183                     /home/vagrant/.ivy2/cache/oauth.signpost/signpost-core/jars/signpost-core-1.2.1.2.jar
+7f6d4e694000-7f6d4e69e000 r--s 000ae000 08:01 394188                     /home/vagrant/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.20.0-GA.jar
+7f6d4e69e000-7f6d4e69f000 r--s 0000b000 08:01 394192                     /home/vagrant/.ivy2/cache/org.asynchttpclient/netty-codec-dns/jars/netty-codec-dns-2.0.11.jar
+7f6d4e69f000-7f6d4e6a0000 r--s 00005000 08:01 394190                     /home/vagrant/.ivy2/cache/org.asynchttpclient/netty-resolver/jars/netty-resolver-2.0.11.jar
+7f6d4e6a0000-7f6d4e6a2000 r--s 0000f000 08:01 394187                     /home/vagrant/.ivy2/cache/org.asynchttpclient/netty-resolver-dns/jars/netty-resolver-dns-2.0.11.jar
+7f6d4e6a2000-7f6d4e6ac000 r--s 00062000 08:01 394181                     /home/vagrant/.ivy2/cache/org.asynchttpclient/async-http-client/jars/async-http-client-2.0.11.jar
+7f6d4e6ac000-7f6d4e6b8000 r--s 00096000 08:01 394179                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-ws_2.11/jars/play-ws_2.11-2.5.10.jar
+7f6d4e6b8000-7f6d4e6ba000 r--s 00008000 08:01 394070                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-java-ws_2.11/jars/play-java-ws_2.11-2.5.10.jar
+7f6d4e6ba000-7f6d4e6d5000 r--s 0012e000 08:01 394177                     /home/vagrant/.ivy2/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.6.11.jar
+7f6d4e6d5000-7f6d4e6d7000 r--s 00012000 08:01 394068                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-cache_2.11/jars/play-cache_2.11-2.5.10.jar
+7f6d4e6d7000-7f6d4e6dc000 r--s 0002d000 08:01 394175                     /home/vagrant/.ivy2/cache/tyrex/tyrex/jars/tyrex-1.0.1.jar
+7f6d4e6dc000-7f6d4e6de000 r--s 00007000 08:01 394171                     /home/vagrant/.ivy2/cache/com.googlecode.usc/jdbcdslog/jars/jdbcdslog-1.0.6.2.jar
+7f6d4e6de000-7f6d4e6e1000 r--s 0001f000 08:01 394169                     /home/vagrant/.ivy2/cache/com.zaxxer/HikariCP/bundles/HikariCP-2.5.1.jar
+7f6d4e6e1000-7f6d4e6e4000 r--s 00019000 08:01 394167                     /home/vagrant/.ivy2/cache/com.jolbox/bonecp/bundles/bonecp-0.8.0.RELEASE.jar
+7f6d4e6e4000-7f6d4e6e5000 r--s 00001000 08:01 394165                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-jdbc-api_2.11/jars/play-jdbc-api_2.11-2.5.10.jar
+7f6d4e6e5000-7f6d4e6e8000 r--s 00018000 08:01 394163                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-jdbc_2.11/jars/play-jdbc_2.11-2.5.10.jar
+7f6d4e6e8000-7f6d4e6e9000 r--s 00002000 08:01 394066                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-java-jdbc_2.11/jars/play-java-jdbc_2.11-2.5.10.jar
+7f6d4e6e9000-7f6d4e6f3000 r--s 00069000 08:01 394161                     /home/vagrant/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.7.jar
+7f6d4e6f3000-7f6d4e6fa000 r--s 00044000 08:01 394159                     /home/vagrant/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.7.jar
+7f6d4e6fa000-7f6d4e6fb000 r--s 00005000 08:01 394064                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-logback_2.11/jars/play-logback_2.11-2.5.10.jar
+7f6d4e6fb000-7f6d4e6fe000 r--s 00022000 08:01 394145                     /home/vagrant/.ivy2/cache/io.netty/netty-transport-native-epoll/jars/netty-transport-native-epoll-4.0.41.Final-linux-x86_64.jar
+7f6d4e6fe000-7f6d4e706000 r--s 00067000 08:01 394149                     /home/vagrant/.ivy2/cache/io.netty/netty-codec-http/jars/netty-codec-http-4.0.41.Final.jar
+7f6d4e706000-7f6d4e70a000 r--s 00021000 08:01 394155                     /home/vagrant/.ivy2/cache/io.netty/netty-codec/jars/netty-codec-4.0.41.Final.jar
+7f6d4e70a000-7f6d4e712000 r--s 00054000 08:01 394153                     /home/vagrant/.ivy2/cache/io.netty/netty-transport/jars/netty-transport-4.0.41.Final.jar
+7f6d4e712000-7f6d4e71d000 r--s 00077000 08:01 394157                     /home/vagrant/.ivy2/cache/io.netty/netty-common/jars/netty-common-4.0.41.Final.jar
+7f6d4e71d000-7f6d4e721000 r--s 00033000 08:01 394151                     /home/vagrant/.ivy2/cache/io.netty/netty-buffer/jars/netty-buffer-4.0.41.Final.jar
+7f6d4e721000-7f6d4e727000 r--s 00045000 08:01 268867                     /home/vagrant/.ivy2/cache/io.netty/netty-handler/jars/netty-handler-4.0.41.Final.jar
+7f6d4e727000-7f6d4e729000 r--s 00004000 08:01 394147                     /home/vagrant/.ivy2/cache/com.typesafe.netty/netty-reactive-streams/jars/netty-reactive-streams-1.0.8.jar
+7f6d4e729000-7f6d4e72a000 r--s 00007000 08:01 394143                     /home/vagrant/.ivy2/cache/com.typesafe.netty/netty-reactive-streams-http/jars/netty-reactive-streams-http-1.0.8.jar
+7f6d4e72a000-7f6d4e72f000 r--s 0002a000 08:01 394062                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/jars/play-netty-server_2.11-2.5.10.jar
+7f6d4e72f000-7f6d4e733000 r--s 00038000 08:01 394137                     /home/vagrant/.ivy2/cache/org.apache.tomcat/tomcat-servlet-api/jars/tomcat-servlet-api-8.0.33.jar
+7f6d4e733000-7f6d4e735000 r--s 00003000 08:01 394135                     /home/vagrant/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-3.0.1.jar
+7f6d4e735000-7f6d4e736000 r--s 00003000 08:01 394134                     /home/vagrant/.ivy2/cache/net.jodah/typetools/bundles/typetools-0.4.4.jar
+7f6d4e736000-7f6d4e762000 r--s 00208000 08:01 268863                     /home/vagrant/.ivy2/cache/com.google.guava/guava/bundles/guava-19.0.jar
+7f6d4e762000-7f6d4e765000 r--s 0001d000 08:01 394132                     /home/vagrant/.ivy2/cache/org.reflections/reflections/jars/reflections-0.9.10.jar
+7f6d4e765000-7f6d4e772000 r--s 000a6000 08:01 394130                     /home/vagrant/.ivy2/cache/org.springframework/spring-beans/jars/spring-beans-4.2.7.RELEASE.jar
+7f6d4e772000-7f6d4e788000 r--s 000f6000 08:01 394128                     /home/vagrant/.ivy2/cache/org.springframework/spring-core/jars/spring-core-4.2.7.RELEASE.jar
+7f6d4e788000-7f6d4e7a1000 r--s 000f3000 08:01 394126                     /home/vagrant/.ivy2/cache/org.springframework/spring-context/jars/spring-context-4.2.7.RELEASE.jar
+7f6d4e7a1000-7f6d4e7a3000 r--s 00010000 08:01 394124                     /home/vagrant/.ivy2/cache/javax.el/javax.el-api/jars/javax.el-api-3.0.0.jar
+7f6d4e7a3000-7f6d4e7a5000 r--s 0000e000 08:01 268865                     /home/vagrant/.ivy2/cache/com.fasterxml/classmate/bundles/classmate-1.1.0.jar
+7f6d4e7a5000-7f6d4e7a7000 r--s 0000f000 08:01 394141                     /home/vagrant/.ivy2/cache/org.jboss.logging/jboss-logging/jars/jboss-logging-3.2.1.Final.jar
+7f6d4e7a7000-7f6d4e7ab000 r--s 0000c000 08:01 394139                     /home/vagrant/.ivy2/cache/javax.validation/validation-api/jars/validation-api-1.1.0.Final.jar
+7f6d4e7ab000-7f6d4e7bb000 r--s 0009c000 08:01 394122                     /home/vagrant/.ivy2/cache/org.hibernate/hibernate-validator/jars/hibernate-validator-5.2.4.Final.jar
+7f6d4e7bb000-7f6d4e7c1000 r--s 0003c000 08:01 394120                     /home/vagrant/.ivy2/cache/org.yaml/snakeyaml/bundles/snakeyaml-1.16.jar
+7f6d4e7c1000-7f6d4e7c5000 r--s 0001d000 08:01 394060                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-java_2.11/jars/play-java_2.11-2.5.10.jar
+7f6d4e7c5000-7f6d4e7c7000 r--s 00009000 08:01 394104                     /home/vagrant/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.0.jar
+7f6d4e7c7000-7f6d4e7d5000 r--s 00096000 08:01 394102                     /home/vagrant/.ivy2/cache/com.google.inject/guice/jars/guice-4.0.jar
+7f6d4e7d5000-7f6d4e7d6000 r--s 00003000 08:01 394100                     /home/vagrant/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar
+7f6d4e7d6000-7f6d4e7df000 r--s 0002d000 08:01 394118                     /home/vagrant/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar
+7f6d4e7df000-7f6d4e7f8000 r--s 00135000 08:01 394098                     /home/vagrant/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar
+7f6d4e7f8000-7f6d4e7ff000 r--s 0003f000 08:01 268860                     /home/vagrant/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.10.jar
+7f6d4e7ff000-7f6d4e800000 r--s 00004000 08:01 394087                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.4.12.jar
+7f6d4e800000-7f6d4e80b000 r--s 0005d000 08:01 265505                     /home/vagrant/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.4.jar
+7f6d4e80b000-7f6d4e813000 r--s 00052000 08:01 394116                     /home/vagrant/.ivy2/cache/com.typesafe/ssl-config-core_2.11/bundles/ssl-config-core_2.11-0.2.1.jar
+7f6d4e813000-7f6d4e821000 r--s 00081000 08:01 394106                     /home/vagrant/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.11/bundles/scala-java8-compat_2.11-0.7.0.jar
+7f6d4e821000-7f6d4e850000 r--s 002f8000 08:01 268859                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.4.12.jar
+7f6d4e850000-7f6d4e89a000 r--s 003d8000 08:01 394114                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-stream_2.11/jars/akka-stream_2.11-2.4.12.jar
+7f6d4e89a000-7f6d4e89b000 r--s 00000000 08:01 394112                     /home/vagrant/.ivy2/cache/org.reactivestreams/reactive-streams/jars/reactive-streams-1.0.0.jar
+7f6d4e89b000-7f6d4e8a2000 r--s 00043000 08:01 394080                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-streams_2.11/jars/play-streams_2.11-2.5.10.jar
+7f6d4e8a2000-7f6d4e8a4000 r--s 00003000 08:01 394085                     /home/vagrant/.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.21.jar
+7f6d4e8a4000-7f6d4e8a6000 r--s 00000000 08:01 394083                     /home/vagrant/.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.21.jar
+7f6d4e8a6000-7f6d4e8a8000 r--s 00009000 08:01 394081                     /home/vagrant/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.21.jar
+7f6d4e8a8000-7f6d4e8a9000 r--s 00004000 08:01 394078                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-netty-utils/jars/play-netty-utils-2.5.10.jar
+7f6d4e8a9000-7f6d4e8ac000 r--s 00013000 08:01 394092                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.7.8.jar
+7f6d4e8ac000-7f6d4e8ae000 r--s 00005000 08:01 394091                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.7.8.jar
+7f6d4e8ae000-7f6d4e8bf000 r--s 00116000 08:01 394090                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.7.8.jar
+7f6d4e8bf000-7f6d4e8c2000 r--s 0000a000 08:01 394089                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.7.8.jar
+7f6d4e8c2000-7f6d4e8c5000 r--s 0003b000 08:01 394088                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.7.8.jar
+7f6d4e8c5000-7f6d4e911000 r--s 00412000 08:01 265503                     /home/vagrant/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar
+7f6d4e911000-7f6d4e915000 r--s 00018000 08:01 394096                     /home/vagrant/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.8.1.jar
+7f6d4e915000-7f6d4e926000 r--s 0008a000 08:01 394095                     /home/vagrant/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.9.6.jar
+7f6d4e926000-7f6d4e927000 r--s 00001000 08:01 394110                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-datacommons_2.11/jars/play-datacommons_2.11-2.5.10.jar
+7f6d4e927000-7f6d4e930000 r--s 0005c000 08:01 394108                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.5.10.jar
+7f6d4e930000-7f6d4e93d000 r--s 00092000 08:01 394076                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.5.10.jar
+7f6d4e93d000-7f6d4e946000 r--s 00091000 08:01 394094                     /home/vagrant/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar
+7f6d4e946000-7f6d4e959000 r--s 000ad000 08:01 394074                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.5.10.jar
+7f6d4e959000-7f6d4e9ac000 r--s 00398000 08:01 394072                     /home/vagrant/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.5.10.jar
+7f6d4e9ac000-7f6d4e9b3000 r--s 00041000 08:01 268858                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-server_2.11/jars/play-server_2.11-2.5.10.jar
+7f6d4e9b3000-7f6d4e9be000 r--s 00096000 08:01 265404                     /home/vagrant/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.1.jar
+7f6d4e9be000-7f6d4e9c0000 r--s 0000d000 08:01 268856                     /home/vagrant/.ivy2/cache/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.1.1.jar
+7f6d4e9c0000-7f6d4ea18000 r--s 00523000 08:01 265390                     /home/vagrant/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar
+7f6d4ea18000-7f6d4ea26000 r--s 001a4000 08:01 394173                     /home/vagrant/.ivy2/cache/com.h2database/h2/jars/h2-1.4.192.jar
+7f6d4ea26000-7f6d4ea7a000 r--s 00b05000 08:01 394261                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-omnidoc_2.11/jars/play-omnidoc_2.11-2.5.10.jar
+7f6d4ea7a000-7f6d4ec7a000 rw-p 00000000 00:00 0 
+7f6d4ec7a000-7f6d4ec7d000 ---p 00000000 00:00 0 
+7f6d4ec7d000-7f6d4ed7b000 rw-p 00000000 00:00 0                          [stack:11659]
+7f6d4ed7b000-7f6d4ed7e000 ---p 00000000 00:00 0 
+7f6d4ed7e000-7f6d4ee7c000 rw-p 00000000 00:00 0                          [stack:11658]
+7f6d4ee7c000-7f6d4ee7f000 ---p 00000000 00:00 0 
+7f6d4ee7f000-7f6d4ef7d000 rw-p 00000000 00:00 0                          [stack:11530]
+7f6d4ef7d000-7f6d4ef80000 ---p 00000000 00:00 0 
+7f6d4ef80000-7f6d4f07e000 rw-p 00000000 00:00 0                          [stack:11661]
+7f6d4f07e000-7f6d4f081000 ---p 00000000 00:00 0 
+7f6d4f081000-7f6d4f17f000 rw-p 00000000 00:00 0                          [stack:11660]
+7f6d4f17f000-7f6d4f182000 ---p 00000000 00:00 0 
+7f6d4f182000-7f6d4f480000 rw-p 00000000 00:00 0                          [stack:11662]
+7f6d4f480000-7f6d4f680000 rw-p 00000000 00:00 0 
+7f6d4f680000-7f6d4f880000 rw-p 00000000 00:00 0 
+7f6d4f880000-7f6d4fa80000 rw-p 00000000 00:00 0 
+7f6d4fa80000-7f6d4fa81000 r--s 00010000 08:01 267685                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/zipfs.jar
+7f6d4fa81000-7f6d4fa8b000 r--s 00116000 08:01 267684                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/localedata.jar
+7f6d4fa8b000-7f6d4fa8f000 r--s 0003a000 08:01 267683                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunpkcs11.jar
+7f6d4fa8f000-7f6d4faab000 r--s 00393000 08:01 267682                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/cldrdata.jar
+7f6d4faab000-7f6d4faac000 r--s 0000a000 08:01 267679                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/jaccess.jar
+7f6d4faac000-7f6d4faae000 r--s 00001000 08:01 267678                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/dnsns.jar
+7f6d4faae000-7f6d4fb43000 r--s 01109000 08:01 267677                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/jfxrt.jar
+7f6d4fb43000-7f6d4fb5e000 r--s 001d3000 08:01 267675                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/nashorn.jar
+7f6d4fb5e000-7f6d4fb63000 r--s 00084000 08:01 267946                     /usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar
+7f6d4fb63000-7f6d4fb68000 r--s 002f9000 08:01 267878                     /usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar
+7f6d4fb68000-7f6d4fb72000 r--s 000a5000 08:01 393354                     /home/vagrant/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.18.2-GA.jar
+7f6d4fb72000-7f6d4fb73000 r--s 00001000 08:01 393352                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-enhancer/jars/play-enhancer-1.1.0.jar
+7f6d4fb73000-7f6d4fb75000 r--s 00005000 08:01 268627                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-play-enhancer/jars/sbt-play-enhancer-1.1.0.jar
+7f6d4fb75000-7f6d4fb79000 r--s 000dc000 08:01 393350                     /home/vagrant/.ivy2/cache/net.java.dev.jna/jna/jars/jna-4.1.0.jar
+7f6d4fb79000-7f6d4fb7d000 r--s 0001d000 08:01 393348                     /home/vagrant/.ivy2/cache/com.nativelibs4java/ochafik-util/jars/ochafik-util-0.12.jar
+7f6d4fb7d000-7f6d4fb7f000 r--s 00009000 08:01 393324                     /home/vagrant/.ivy2/cache/com.nativelibs4java/jnaerator-runtime/jars/jnaerator-runtime-0.12.jar
+7f6d4fb7f000-7f6d4fb82000 r--s 0000c000 08:01 393344                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.5.4.jar
+7f6d4fb82000-7f6d4fb84000 r--s 00003000 08:01 393342                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.5.4.jar
+7f6d4fb84000-7f6d4fb96000 r--s 00106000 08:01 393340                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.4.jar
+7f6d4fb96000-7f6d4fb98000 r--s 00008000 08:01 393338                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.4.jar
+7f6d4fb98000-7f6d4fb9c000 r--s 00035000 08:01 393336                     /home/vagrant/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.4.jar
+7f6d4fb9c000-7f6d4fba0000 r--s 00016000 08:01 393334                     /home/vagrant/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.7.jar
+7f6d4fba0000-7f6d4fbb0000 r--s 00088000 08:01 393332                     /home/vagrant/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.1.jar
+7f6d4fbb0000-7f6d4fbb1000 r--s 00001000 08:01 393330                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-datacommons_2.10/jars/play-datacommons_2.10-2.4.6.jar
+7f6d4fbb1000-7f6d4fbba000 r--s 0005a000 08:01 393328                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-functional_2.10/jars/play-functional_2.10-2.4.6.jar
+7f6d4fbba000-7f6d4fbc3000 r--s 00096000 08:01 393346                     /home/vagrant/.ivy2/cache/org.scala-stm/scala-stm_2.10/jars/scala-stm_2.10-0.7.jar
+7f6d4fbc3000-7f6d4fbd5000 r--s 000ad000 08:01 393326                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-iteratees_2.10/jars/play-iteratees_2.10-2.4.6.jar
+7f6d4fbd5000-7f6d4fbe1000 r--s 0008c000 08:01 393322                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-json_2.10/jars/play-json_2.10-2.4.6.jar
+7f6d4fbe1000-7f6d4fbe4000 r--s 003f9000 08:01 268625                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/org.irundaia.sbt/sbt-sassify/jars/sbt-sassify-1.4.6.jar
+7f6d4fbe4000-7f6d4fbe5000 r--s 00001000 08:01 393320                     /home/vagrant/.ivy2/cache/org.webjars/diff/jars/diff-1.0.7.jar
+7f6d4fbe5000-7f6d4fbe7000 r--s 00000000 08:01 393318                     /home/vagrant/.ivy2/cache/org.webjars/debug/jars/debug-0.7.4.jar
+7f6d4fbe7000-7f6d4fbea000 r--s 0000c000 08:01 393316                     /home/vagrant/.ivy2/cache/org.webjars/mocha/jars/mocha-1.17.1.jar
+7f6d4fbea000-7f6d4fbef000 r--s 00026000 08:01 268623                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-mocha/jars/sbt-mocha-1.1.0.jar
+7f6d4fbef000-7f6d4fbf2000 r--s 00011000 08:01 268621                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-digest/jars/sbt-digest-1.1.1.jar
+7f6d4fbf2000-7f6d4fbf6000 r--s 00020000 08:01 393314                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-js-engine/jars/sbt-js-engine-1.1.4.jar
+7f6d4fbf6000-7f6d4fbf7000 r--s 00033000 08:01 393312                     /home/vagrant/.ivy2/cache/org.webjars/rjs/jars/rjs-2.2.0.jar
+7f6d4fbf7000-7f6d4fbfa000 r--s 0000f000 08:01 268619                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-rjs/jars/sbt-rjs-1.0.8.jar
+7f6d4fbfa000-7f6d4fbfc000 r--s 00000000 08:01 393306                     /home/vagrant/.ivy2/cache/org.webjars/strip-json-comments/jars/strip-json-comments-1.0.2-1.jar
+7f6d4fbfc000-7f6d4fbfe000 r--s 00000000 08:01 393310                     /home/vagrant/.ivy2/cache/org.webjars/console-browserify/jars/console-browserify-0.1.6-1.jar
+7f6d4fbfe000-7f6d4fc00000 r--s 00006000 08:01 393308                     /home/vagrant/.ivy2/cache/org.webjars/underscorejs/jars/underscorejs-1.5.2-2.jar
+7f6d4fc00000-7f6d4fe00000 rw-p 00000000 00:00 0 
+7f6d4fe00000-7f6d50000000 rw-p 00000000 00:00 0 
+7f6d50000000-7f6d5002b000 rw-p 00000000 00:00 0 
+7f6d5002b000-7f6d54000000 ---p 00000000 00:00 0 
+7f6d54000000-7f6d545b6000 rw-p 00000000 00:00 0 
+7f6d545b6000-7f6d58000000 ---p 00000000 00:00 0 
+7f6d58000000-7f6d58021000 rw-p 00000000 00:00 0 
+7f6d58021000-7f6d5c000000 ---p 00000000 00:00 0 
+7f6d5c000000-7f6d5cc9d000 rw-p 00000000 00:00 0 
+7f6d5cc9d000-7f6d60000000 ---p 00000000 00:00 0 
+7f6d60000000-7f6d60330000 rw-p 00000000 00:00 0 
+7f6d60330000-7f6d64000000 ---p 00000000 00:00 0 
+7f6d64000000-7f6d64021000 rw-p 00000000 00:00 0 
+7f6d64021000-7f6d68000000 ---p 00000000 00:00 0 
+7f6d68000000-7f6d68001000 r--s 0002b000 08:01 393304                     /home/vagrant/.ivy2/cache/org.webjars/jshint-node/jars/jshint-node-2.6.3-2.jar
+7f6d68001000-7f6d68002000 r--s 00004000 08:01 268617                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-jshint/jars/sbt-jshint-1.0.4.jar
+7f6d68002000-7f6d68004000 r--s 00005000 08:01 268707                     /home/vagrant/.ivy2/cache/org.webjars/es6-promise-node/jars/es6-promise-node-2.1.1.jar
+7f6d68004000-7f6d68007000 r--s 00009000 08:01 393300                     /home/vagrant/.ivy2/cache/org.webjars/clean-css/jars/clean-css-2.2.7.jar
+7f6d68007000-7f6d68009000 r--s 00000000 08:01 393298                     /home/vagrant/.ivy2/cache/org.webjars/mkdirp/jars/mkdirp-0.5.0.jar
+7f6d68009000-7f6d6800a000 r--s 00001000 08:01 393302                     /home/vagrant/.ivy2/cache/org.webjars/amdefine/jars/amdefine-0.1.0-2.jar
+7f6d6800a000-7f6d6800c000 r--s 00005000 08:01 393296                     /home/vagrant/.ivy2/cache/org.webjars/source-map/jars/source-map-0.1.40-1.jar
+7f6d6800c000-7f6d68010000 r--s 00020000 08:01 393294                     /home/vagrant/.ivy2/cache/org.webjars/less-node/jars/less-node-2.5.0.jar
+7f6d68010000-7f6d68012000 r--s 00008000 08:01 268615                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-less/jars/sbt-less-1.1.0.jar
+7f6d68012000-7f6d68014000 r--s 00013000 08:01 393292                     /home/vagrant/.ivy2/cache/org.webjars/coffee-script-node/jars/coffee-script-node-1.7.1.jar
+7f6d68014000-7f6d68016000 r--s 00003000 08:01 268613                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-coffeescript/jars/sbt-coffeescript-1.0.0.jar
+7f6d68016000-7f6d68066000 r--s 0028c000 08:01 393290                     /home/vagrant/.ivy2/cache/org.webjars/npm/jars/npm-2.11.2.jar
+7f6d68066000-7f6d68067000 r--s 00001000 08:01 393238                     /home/vagrant/.ivy2/cache/com.typesafe/npm_2.10/jars/npm_2.10-1.1.1.jar
+7f6d68067000-7f6d68068000 r--s 00007000 08:01 393288                     /home/vagrant/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar
+7f6d68068000-7f6d68069000 r--s 00002000 08:01 393250                     /home/vagrant/.ivy2/cache/org.slf4j/slf4j-simple/jars/slf4j-simple-1.7.12.jar
+7f6d68069000-7f6d6806d000 r--s 00043000 08:01 393248                     /home/vagrant/.ivy2/cache/io.spray/spray-json_2.10/bundles/spray-json_2.10-1.3.2.jar
+7f6d6806d000-7f6d68071000 r--s 000ac000 08:01 393246                     /home/vagrant/.ivy2/cache/io.apigee.trireme/trireme-node10src/jars/trireme-node10src-0.8.5.jar
+7f6d68071000-7f6d6807e000 r--s 0010f000 08:01 393286                     /home/vagrant/.ivy2/cache/io.apigee/rhino/jars/rhino-1.7R5pre4.jar
+7f6d6807e000-7f6d68086000 r--s 00060000 08:01 393244                     /home/vagrant/.ivy2/cache/io.apigee.trireme/trireme-core/jars/trireme-core-0.8.5.jar
+7f6d68086000-7f6d68087000 r--s 0001e000 08:01 393282                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-win64/jars/leveldbjni-win64-1.5.jar
+7f6d68087000-7f6d68088000 r--s 0001b000 08:01 393280                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-win32/jars/leveldbjni-win32-1.5.jar
+7f6d68088000-7f6d68089000 r--s 00044000 08:01 393278                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-linux64/jars/leveldbjni-linux64-1.5.jar
+7f6d68089000-7f6d6808a000 r--s 00044000 08:01 393276                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-linux32/jars/leveldbjni-linux32-1.5.jar
+7f6d6808a000-7f6d6808b000 r--s 00028000 08:01 393274                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-osx/jars/leveldbjni-osx-1.5.jar
+7f6d6808b000-7f6d6808d000 r--s 0000c000 08:01 393272                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni/jars/leveldbjni-1.7.jar
+7f6d6808d000-7f6d68090000 r--s 000fa000 08:01 393266                     /home/vagrant/.ivy2/cache/org.fusesource.leveldbjni/leveldbjni-all/bundles/leveldbjni-all-1.7.jar
+7f6d68090000-7f6d680b2000 r--s 00195000 08:01 393270                     /home/vagrant/.ivy2/cache/com.google.guava/guava/jars/guava-12.0.jar
+7f6d680b2000-7f6d680b4000 r--s 00001000 08:01 393268                     /home/vagrant/.ivy2/cache/org.iq80.leveldb/leveldb-api/jars/leveldb-api-0.5.jar
+7f6d680b4000-7f6d680b8000 r--s 00034000 08:01 393264                     /home/vagrant/.ivy2/cache/org.iq80.leveldb/leveldb/jars/leveldb-0.5.jar
+7f6d680b8000-7f6d680c6000 r--s 000bf000 08:01 393256                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-persistence-experimental_2.10/jars/akka-persistence-experimental_2.10-2.3.11.jar
+7f6d680c6000-7f6d680d6000 r--s 000f7000 08:01 393254                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-cluster_2.10/jars/akka-cluster_2.10-2.3.11.jar
+7f6d680d6000-7f6d680ee000 r--s 00115000 08:01 393258                     /home/vagrant/.ivy2/cache/io.netty/netty/bundles/netty-3.8.0.Final.jar
+7f6d680ee000-7f6d68104000 r--s 00135000 08:01 393252                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-remote_2.10/jars/akka-remote_2.10-2.3.11.jar
+7f6d68104000-7f6d68107000 ---p 00000000 00:00 0 
+7f6d68107000-7f6d68205000 rw-p 00000000 00:00 0                          [stack:11663]
+7f6d68205000-7f6d68208000 ---p 00000000 00:00 0 
+7f6d68208000-7f6d68506000 rw-p 00000000 00:00 0                          [stack:11676]
+7f6d68506000-7f6d68509000 ---p 00000000 00:00 0 
+7f6d68509000-7f6d68607000 rw-p 00000000 00:00 0                          [stack:11665]
+7f6d68607000-7f6d6860a000 ---p 00000000 00:00 0 
+7f6d6860a000-7f6d68708000 rw-p 00000000 00:00 0                          [stack:11666]
+7f6d68708000-7f6d6870b000 ---p 00000000 00:00 0 
+7f6d6870b000-7f6d68a09000 rw-p 00000000 00:00 0                          [stack:11521]
+7f6d68a09000-7f6d68c09000 rw-p 00000000 00:00 0 
+7f6d68c09000-7f6d68e09000 rw-p 00000000 00:00 0 
+7f6d68e09000-7f6d69009000 rw-p 00000000 00:00 0 
+7f6d69009000-7f6d69209000 rw-p 00000000 00:00 0 
+7f6d69209000-7f6d6920a000 r--s 00004000 08:01 393284                     /home/vagrant/.ivy2/cache/org.fusesource.hawtjni/hawtjni-runtime/jars/hawtjni-runtime-1.8.jar
+7f6d6920a000-7f6d6920c000 r--s 0000a000 08:01 393262                     /home/vagrant/.ivy2/cache/org.uncommons.maths/uncommons-maths/jars/uncommons-maths-1.2.2a.jar
+7f6d6920c000-7f6d69214000 r--s 0007b000 08:01 393260                     /home/vagrant/.ivy2/cache/com.google.protobuf/protobuf-java/bundles/protobuf-java-2.5.0.jar
+7f6d69214000-7f6d69223000 r--s 000bf000 08:01 393242                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-contrib_2.10/jars/akka-contrib_2.10-2.3.11.jar
+7f6d69223000-7f6d69249000 r--s 00263000 08:01 393240                     /home/vagrant/.ivy2/cache/com.typesafe.akka/akka-actor_2.10/jars/akka-actor_2.10-2.3.11.jar
+7f6d69249000-7f6d6924d000 r--s 00022000 08:01 393236                     /home/vagrant/.ivy2/cache/com.typesafe/jse_2.10/jars/jse_2.10-1.1.2.jar
+7f6d6924d000-7f6d69254000 r--s 00056000 08:01 268705                     /home/vagrant/.ivy2/cache/org.apache.commons/commons-compress/jars/commons-compress-1.9.jar
+7f6d69254000-7f6d69255000 r--s 00006000 08:01 393234                     /home/vagrant/.ivy2/cache/org.webjars/webjars-locator-core/jars/webjars-locator-core-0.26.jar
+7f6d69255000-7f6d69257000 r--s 00002000 08:01 393232                     /home/vagrant/.ivy2/cache/org.webjars/webjars-locator/jars/webjars-locator-0.26.jar
+7f6d69257000-7f6d69297000 r--s 00277000 08:01 268704                     /home/vagrant/.ivy2/cache/org.bouncycastle/bcprov-jdk15on/jars/bcprov-jdk15on-1.51.jar
+7f6d69297000-7f6d69497000 rw-p 00000000 00:00 0 
+7f6d69497000-7f6d6949f000 r--s 00040000 08:01 268640                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-web/jars/sbt-web-1.3.0.jar
+7f6d6949f000-7f6d694a6000 r--s 00038000 08:01 268664                     /home/vagrant/.ivy2/cache/org.bouncycastle/bcpg-jdk15on/jars/bcpg-jdk15on-1.51.jar
+7f6d694a6000-7f6d694a7000 r--s 00004000 08:01 268702                     /home/vagrant/.ivy2/cache/org.apache.ant/ant-launcher/jars/ant-launcher-1.9.3.jar
+7f6d694a7000-7f6d694c6000 r--s 001cc000 08:01 268662                     /home/vagrant/.ivy2/cache/org.apache.ant/ant/jars/ant-1.9.3.jar
+7f6d694c6000-7f6d694ca000 r--s 00020000 08:01 268680                     /home/vagrant/.ivy2/cache/org.eclipse.aether/aether-impl/jars/aether-impl-0.9.0.M2.jar
+7f6d694ca000-7f6d694ce000 r--s 0001d000 08:01 268684                     /home/vagrant/.ivy2/cache/org.eclipse.aether/aether-util/jars/aether-util-0.9.0.M2.jar
+7f6d694ce000-7f6d694d0000 r--s 00003000 08:01 393230                     /home/vagrant/.ivy2/cache/org.eclipse.aether/aether-spi/jars/aether-spi-0.9.0.M2.jar
+7f6d694d0000-7f6d694d4000 r--s 0001d000 08:01 268682                     /home/vagrant/.ivy2/cache/org.eclipse.aether/aether-api/jars/aether-api-0.9.0.M2.jar
+7f6d694d4000-7f6d694d6000 r--s 0000e000 08:01 268678                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-aether-provider/jars/maven-aether-provider-3.2.2.jar
+7f6d694d6000-7f6d694db000 r--s 00025000 08:01 268676                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-model-builder/jars/maven-model-builder-3.2.2.jar
+7f6d694db000-7f6d694de000 r--s 0000a000 08:01 268692                     /home/vagrant/.ivy2/cache/org.codehaus.plexus/plexus-classworlds/bundles/plexus-classworlds-2.5.1.jar
+7f6d694de000-7f6d694e4000 r--s 00042000 08:01 393220                     /home/vagrant/.ivy2/cache/org.eclipse.sisu/org.eclipse.sisu.inject/eclipse-plugins/org.eclipse.sisu.inject-0.0.0.M5.jar
+7f6d694e4000-7f6d694e6000 r--s 00000000 08:01 393228                     /home/vagrant/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar
+7f6d694e6000-7f6d694ee000 r--s 00050000 08:01 393218                     /home/vagrant/.ivy2/cache/org.sonatype.sisu/sisu-guice/jars/sisu-guice-3.1.0-no_aop.jar
+7f6d694ee000-7f6d694f1000 r--s 00006000 08:01 393226                     /home/vagrant/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-1.3.9.jar
+7f6d694f1000-7f6d694f2000 r--s 00000000 08:01 393224                     /home/vagrant/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar
+7f6d694f2000-7f6d694f3000 r--s 00001000 08:01 393222                     /home/vagrant/.ivy2/cache/javax.annotation/jsr250-api/jars/jsr250-api-1.0.jar
+7f6d694f3000-7f6d694f6000 r--s 00008000 08:01 268700                     /home/vagrant/.ivy2/cache/javax.enterprise/cdi-api/jars/cdi-api-1.0.jar
+7f6d694f6000-7f6d694fc000 r--s 0002a000 08:01 268686                     /home/vagrant/.ivy2/cache/org.eclipse.sisu/org.eclipse.sisu.plexus/eclipse-plugins/org.eclipse.sisu.plexus-0.0.0.M5.jar
+7f6d694fc000-7f6d694fe000 r--s 0000a000 08:01 268660                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-plugin-api/jars/maven-plugin-api-3.2.2.jar
+7f6d694fe000-7f6d69501000 r--s 0000b000 08:01 268674                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-artifact/jars/maven-artifact-3.2.2.jar
+7f6d69501000-7f6d69503000 r--s 00005000 08:01 268672                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-repository-metadata/jars/maven-repository-metadata-3.2.2.jar
+7f6d69503000-7f6d69505000 r--s 00002000 08:01 268698                     /home/vagrant/.ivy2/cache/org.sonatype.plexus/plexus-cipher/jars/plexus-cipher-1.4.jar
+7f6d69505000-7f6d69506000 r--s 00006000 08:01 268696                     /home/vagrant/.ivy2/cache/org.sonatype.plexus/plexus-sec-dispatcher/jars/plexus-sec-dispatcher-1.3.jar
+7f6d69506000-7f6d69508000 r--s 00000000 08:01 268694                     /home/vagrant/.ivy2/cache/org.codehaus.plexus/plexus-component-annotations/jars/plexus-component-annotations-1.5.5.jar
+7f6d69508000-7f6d6950b000 r--s 0000d000 08:01 268688                     /home/vagrant/.ivy2/cache/org.codehaus.plexus/plexus-interpolation/jars/plexus-interpolation-1.19.jar
+7f6d6950b000-7f6d6950d000 r--s 00009000 08:01 268670                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-settings-builder/jars/maven-settings-builder-3.2.2.jar
+7f6d6950d000-7f6d6950f000 r--s 00009000 08:01 268668                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-settings/jars/maven-settings-3.2.2.jar
+7f6d6950f000-7f6d69513000 r--s 0003a000 08:01 268690                     /home/vagrant/.ivy2/cache/org.codehaus.plexus/plexus-utils/jars/plexus-utils-3.0.17.jar
+7f6d69513000-7f6d69516000 r--s 00025000 08:01 268666                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-model/jars/maven-model-3.2.2.jar
+7f6d69516000-7f6d6952c000 r--s 0010a000 08:01 268656                     /home/vagrant/.ivy2/cache/org.vafer/jdeb/jars/jdeb-1.3.jar
+7f6d6952c000-7f6d6972c000 rw-p 00000000 00:00 0 
+7f6d6972c000-7f6d6992c000 rw-p 00000000 00:00 0 
+7f6d6992c000-7f6d69b2c000 rw-p 00000000 00:00 0 
+7f6d69b2c000-7f6d69b38000 r--s 00081000 08:01 268658                     /home/vagrant/.ivy2/cache/org.apache.maven/maven-core/jars/maven-core-3.2.2.jar
+7f6d69b38000-7f6d69b53000 r--s 000f0000 08:01 268638                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-native-packager/jars/sbt-native-packager-1.0.3.jar
+7f6d69b53000-7f6d69b56000 r--s 00011000 08:01 268636                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-twirl/jars/sbt-twirl-1.1.1.jar
+7f6d69b56000-7f6d69b58000 r--s 000a0000 08:01 268634                     /home/vagrant/.ivy2/cache/net.contentobjects.jnotify/jnotify/jars/jnotify-0.94-play-1.jar
+7f6d69b58000-7f6d69b5d000 r--s 0003f000 08:01 268632                     /home/vagrant/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar
+7f6d69b5d000-7f6d69b65000 r--s 00041000 08:01 268654                     /home/vagrant/.ivy2/cache/com.typesafe.play/twirl-parser_2.10/jars/twirl-parser_2.10-1.1.1.jar
+7f6d69b65000-7f6d69b68000 r--s 00019000 08:01 268650                     /home/vagrant/.ivy2/cache/com.typesafe.play/twirl-compiler_2.10/jars/twirl-compiler_2.10-1.1.1.jar
+7f6d69b68000-7f6d69b6a000 r--s 00000000 08:01 268652                     /home/vagrant/.ivy2/cache/com.typesafe.play/play-exceptions/jars/play-exceptions-2.5.10.jar
+7f6d69b6a000-7f6d69b6b000 r--s 00000000 08:01 268648                     /home/vagrant/.ivy2/cache/com.typesafe.play/build-link/jars/build-link-2.5.10.jar
+7f6d69b6b000-7f6d69b6f000 r--s 00022000 08:01 268631                     /home/vagrant/.ivy2/cache/com.typesafe.play/sbt-run-support_2.10/jars/sbt-run-support_2.10-2.5.10.jar
+7f6d69b6f000-7f6d69b73000 r--s 0002a000 08:01 268644                     /home/vagrant/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar
+7f6d69b73000-7f6d69b7a000 r--s 00064000 08:01 268646                     /home/vagrant/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar
+7f6d69b7a000-7f6d69b7c000 r--s 0000d000 08:01 268642                     /home/vagrant/.ivy2/cache/com.typesafe.play/twirl-api_2.10/jars/twirl-api_2.10-1.1.1.jar
+7f6d69b7c000-7f6d69b8c000 r--s 00086000 08:01 268629                     /home/vagrant/.ivy2/cache/com.typesafe.play/sbt-routes-compiler_2.10/jars/sbt-routes-compiler_2.10-2.5.10.jar
+7f6d69b8c000-7f6d69b95000 r--s 00054000 08:01 268611                     /home/vagrant/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.play/sbt-plugin/jars/sbt-plugin-2.5.10.jar
+7f6d69b95000-7f6d69d95000 rw-p 00000000 00:00 0 
+7f6d69d95000-7f6d69f95000 rw-p 00000000 00:00 0 
+7f6d69f95000-7f6d6a195000 rw-p 00000000 00:00 0 
+7f6d6a195000-7f6d6a20f000 r--s 010f6000 08:01 266744                     /usr/lib/jvm/java-8-oracle/lib/tools.jar
+7f6d6a20f000-7f6d6a40f000 rw-p 00000000 00:00 0 
+7f6d6a40f000-7f6d6a412000 ---p 00000000 00:00 0 
+7f6d6a412000-7f6d6a448000 rw-p 00000000 00:00 0                          [stack:11670]
+7f6d6a448000-7f6d6a44a000 r--s 0000b000 08:01 265970                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/xsbti/interface-0.13.11.jar
+7f6d6a44a000-7f6d6a64a000 rw-p 00000000 00:00 0 
+7f6d6a64a000-7f6d6a655000 r--s 00097000 08:01 265983                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/main-settings-0.13.11.jar
+7f6d6a655000-7f6d6a656000 r--s 00001000 08:01 265950                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/json4s-support_2.10-0.6.0.jar
+7f6d6a656000-7f6d6a658000 r--s 00006000 08:01 265979                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/relation-0.13.11.jar
+7f6d6a658000-7f6d6a858000 rw-p 00000000 00:00 0 
+7f6d6a858000-7f6d6a85d000 r--s 00037000 08:01 265975                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/command-0.13.11.jar
+7f6d6a85d000-7f6d6a863000 r--s 00038000 08:01 265978                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/compile-0.13.11.jar
+7f6d6a863000-7f6d6a866000 r--s 00018000 08:01 265960                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/logging-0.13.11.jar
+7f6d6a866000-7f6d6a868000 r--s 00017000 08:01 265962                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/testing-0.13.11.jar
+7f6d6a868000-7f6d6a870000 r--s 00060000 08:01 265949                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/collections-0.13.11.jar
+7f6d6a870000-7f6d6a87e000 r--s 000bc000 08:01 265958                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/scala-pickling_2.10-0.10.1.jar
+7f6d6a87e000-7f6d6a882000 r--s 0001b000 08:01 265988                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/process-0.13.11.jar
+7f6d6a882000-7f6d6a884000 r--s 00002000 08:01 265954                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/control-0.13.11.jar
+7f6d6a884000-7f6d6a887000 r--s 0001d000 08:01 265986                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/task-system-0.13.11.jar
+7f6d6a887000-7f6d6a888000 r--s 00005000 08:01 265956                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/test-agent-0.13.11.jar
+7f6d6a888000-7f6d6a88a000 r--s 00001000 08:01 265989                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/cross-0.13.11.jar
+7f6d6a88a000-7f6d6a891000 r--s 0004b000 08:01 265972                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/serialization_2.10-0.1.2.jar
+7f6d6a891000-7f6d6a894000 r--s 00013000 08:01 265963                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/classpath-0.13.11.jar
+7f6d6a894000-7f6d6a896000 r--s 00002000 08:01 265991                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/test-interface-1.0.jar
+7f6d6a896000-7f6d6a89b000 r--s 00024000 08:01 265957                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/persist-0.13.11.jar
+7f6d6a89b000-7f6d6a8a5000 r--s 0006e000 08:01 265964                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/incremental-compiler-0.13.11.jar
+7f6d6a8a5000-7f6d6a8a7000 r--s 00013000 08:01 265974                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/json4s-ast_2.10-3.2.10.jar
+7f6d6a8a7000-7f6d6a8b0000 r--s 0006f000 08:01 265994                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/actions-0.13.11.jar
+7f6d6a8b0000-7f6d6a8ba000 r--s 00085000 08:01 265995                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/json4s-core_2.10-3.2.10.jar
+7f6d6a8ba000-7f6d6a8be000 r--s 0001d000 08:01 265967                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/tasks-0.13.11.jar
+7f6d6a8be000-7f6d6a8c2000 r--s 00022000 08:01 265985                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/sbinary_2.10-0.4.2.jar
+7f6d6a8c2000-7f6d6a8f7000 r--s 002da000 08:01 265977                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/scala-reflect-2.10.6.jar
+7f6d6a8f7000-7f6d6a8f9000 r--s 00007000 08:01 265966                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/compiler-ivy-integration-0.13.11.jar
+7f6d6a8f9000-7f6d6a8fa000 r--s 00005000 08:01 265976                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/sbt-0.13.11.jar
+7f6d6a8fa000-7f6d6a8fc000 r--s 0001a000 08:01 265953                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/jansi-1.11.jar
+7f6d6a8fc000-7f6d6a903000 r--s 0003f000 08:01 265981                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/io-0.13.11.jar
+7f6d6a903000-7f6d6a918000 r--s 00101000 08:01 265965                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/ivy-2.3.0-sbt-2cc8d2761242b072cedb0a04cb39435c4fa24f9a.jar
+7f6d6a918000-7f6d6a919000 r--s 00002000 08:01 265996                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/launcher-interface-1.0.0-M1.jar
+7f6d6a919000-7f6d6a921000 r--s 00057000 08:01 265997                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/completion-0.13.11.jar
+7f6d6a921000-7f6d6a924000 r--s 0001e000 08:01 265959                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/run-0.13.11.jar
+7f6d6a924000-7f6d6a930000 r--s 000a4000 08:01 265980                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/quasiquotes_2.10-2.0.1.jar
+7f6d6a930000-7f6d6a952000 r--s 001bc000 08:01 265948                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/ivy-0.13.11.jar
+7f6d6a952000-7f6d6a97f000 r--s 00242000 08:01 265992                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/main-0.13.11.jar
+7f6d6a97f000-7f6d6aa7d000 r--s 00cd0000 08:01 266009                     /home/vagrant/.sbt/boot/scala-2.10.6/lib/scala-compiler.jar
+7f6d6aa7d000-7f6d6ac7d000 rw-p 00000000 00:00 0 
+7f6d6ac7d000-7f6d6ae7d000 rw-p 00000000 00:00 0 
+7f6d6ae7d000-7f6d6b07d000 rw-p 00000000 00:00 0 
+7f6d6b07d000-7f6d6b080000 ---p 00000000 00:00 0 
+7f6d6b080000-7f6d6b17e000 rw-p 00000000 00:00 0                          [stack:11525]
+7f6d6b17e000-7f6d6b195000 r-xp 00000000 08:01 3372                       /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f6d6b195000-7f6d6b395000 ---p 00017000 08:01 3372                       /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f6d6b395000-7f6d6b396000 r--p 00017000 08:01 3372                       /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f6d6b396000-7f6d6b397000 rw-p 00018000 08:01 3372                       /lib/x86_64-linux-gnu/libresolv-2.19.so
+7f6d6b397000-7f6d6b399000 rw-p 00000000 00:00 0 
+7f6d6b399000-7f6d6b39e000 r-xp 00000000 08:01 3280                       /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f6d6b39e000-7f6d6b59d000 ---p 00005000 08:01 3280                       /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f6d6b59d000-7f6d6b59e000 r--p 00004000 08:01 3280                       /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f6d6b59e000-7f6d6b59f000 rw-p 00005000 08:01 3280                       /lib/x86_64-linux-gnu/libnss_dns-2.19.so
+7f6d6b59f000-7f6d6b5a2000 r-xp 00000000 08:01 59308                      /lib/x86_64-linux-gnu/libnss_myhostname.so.2
+7f6d6b5a2000-7f6d6b7a1000 ---p 00003000 08:01 59308                      /lib/x86_64-linux-gnu/libnss_myhostname.so.2
+7f6d6b7a1000-7f6d6b7a2000 r--p 00002000 08:01 59308                      /lib/x86_64-linux-gnu/libnss_myhostname.so.2
+7f6d6b7a2000-7f6d6b7a3000 rw-p 00003000 08:01 59308                      /lib/x86_64-linux-gnu/libnss_myhostname.so.2
+7f6d6b7a3000-7f6d6b9a3000 rw-p 00000000 00:00 0 
+7f6d6b9a3000-7f6d6bba3000 rw-p 00000000 00:00 0 
+7f6d6bba3000-7f6d6bbb9000 r-xp 00000000 08:01 3275                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f6d6bbb9000-7f6d6bdb8000 ---p 00016000 08:01 3275                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f6d6bdb8000-7f6d6bdb9000 rw-p 00015000 08:01 3275                       /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f6d6bdb9000-7f6d6bdeb000 r-xp 00000000 08:01 267753                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libsunec.so
+7f6d6bdeb000-7f6d6bfea000 ---p 00032000 08:01 267753                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libsunec.so
+7f6d6bfea000-7f6d6bff0000 rw-p 00031000 08:01 267753                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libsunec.so
+7f6d6bff0000-7f6d6c000000 rw-p 00000000 00:00 0 
+7f6d6c000000-7f6d6d3e3000 rw-p 00000000 00:00 0 
+7f6d6d3e3000-7f6d70000000 ---p 00000000 00:00 0 
+7f6d70000000-7f6d70021000 rw-p 00000000 00:00 0 
+7f6d70021000-7f6d74000000 ---p 00000000 00:00 0 
+7f6d74000000-7f6d74021000 rw-p 00000000 00:00 0 
+7f6d74021000-7f6d78000000 ---p 00000000 00:00 0 
+7f6d78000000-7f6d7a9b9000 rw-p 00000000 00:00 0 
+7f6d7a9b9000-7f6d7c000000 ---p 00000000 00:00 0 
+7f6d7c000000-7f6d7c021000 rw-p 00000000 00:00 0 
+7f6d7c021000-7f6d80000000 ---p 00000000 00:00 0 
+7f6d80000000-7f6d80021000 rw-p 00000000 00:00 0 
+7f6d80021000-7f6d84000000 ---p 00000000 00:00 0 
+7f6d84000000-7f6d840d2000 rw-p 00000000 00:00 0 
+7f6d840d2000-7f6d88000000 ---p 00000000 00:00 0 
+7f6d88000000-7f6d88002000 r--s 00015000 08:01 265951                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/classfile-0.13.11.jar
+7f6d88002000-7f6d88004000 r--s 00007000 08:01 265990                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/paranamer-2.6.jar
+7f6d88004000-7f6d88008000 r--s 0001c000 08:01 265984                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/compiler-integration-0.13.11.jar
+7f6d88008000-7f6d8800c000 r--s 00039000 08:01 265982                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/jline-2.13.jar
+7f6d8800c000-7f6d8800e000 r--s 0000e000 08:01 265968                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/logic-0.13.11.jar
+7f6d8800e000-7f6d88012000 r--s 00034000 08:01 265952                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/jsch-0.1.46.jar
+7f6d88012000-7f6d88014000 r--s 00014000 08:01 265973                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/apply-macro-0.13.11.jar
+7f6d88014000-7f6d88016000 r--s 00012000 08:01 265993                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/jawn-parser_2.10-0.6.0.jar
+7f6d88016000-7f6d8801c000 r--s 00040000 08:01 265971                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/api-0.13.11.jar
+7f6d8801c000-7f6d8801e000 r--s 0000b000 08:01 265955                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/tracking-0.13.11.jar
+7f6d8801e000-7f6d88024000 r--s 00038000 08:01 265961                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/compiler-interface-0.13.11.jar
+7f6d88024000-7f6d88027000 r--s 0001a000 08:01 265987                     /home/vagrant/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.11/cache-0.13.11.jar
+7f6d88027000-7f6d8802b000 r--s 00025000 08:01 266012                     /home/vagrant/.sbt/boot/scala-2.10.6/lib/jline.jar
+7f6d8802b000-7f6d8809e000 r--s 0065b000 08:01 266013                     /home/vagrant/.sbt/boot/scala-2.10.6/lib/scala-library.jar
+7f6d8809e000-7f6d880d3000 r--s 002da000 08:01 266010                     /home/vagrant/.sbt/boot/scala-2.10.6/lib/scala-reflect.jar
+7f6d880d3000-7f6d880d6000 r--s 00018000 08:01 266011                     /home/vagrant/.sbt/boot/scala-2.10.6/lib/jansi.jar
+7f6d880d6000-7f6d880d9000 ---p 00000000 00:00 0 
+7f6d880d9000-7f6d881d7000 rw-p 00000000 00:00 0                          [stack:11675]
+7f6d881d7000-7f6d881ea000 r--s 00345000 08:01 267876                     /usr/lib/jvm/java-8-oracle/jre/lib/resources.jar
+7f6d881ea000-7f6d881f0000 r--s 0003f000 08:01 267681                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunjce_provider.jar
+7f6d881f0000-7f6d881f2000 r--s 00009000 08:01 267680                     /usr/lib/jvm/java-8-oracle/jre/lib/ext/sunec.jar
+7f6d881f2000-7f6d881f5000 r--s 0001a000 08:01 267686                     /usr/lib/jvm/java-8-oracle/jre/lib/jce.jar
+7f6d881f5000-7f6d881f9000 r--s 0009a000 08:01 267687                     /usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar
+7f6d881f9000-7f6d883f9000 rw-p 00000000 00:00 0 
+7f6d883f9000-7f6d88406000 r--s 00097000 08:01 265476                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/jackson-mapper-asl-1.8.9.jar
+7f6d88406000-7f6d8840a000 r--s 00032000 08:01 265482                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/config-1.2.1.jar
+7f6d8840a000-7f6d884ca000 r--s 0072c000 08:01 265458                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/aws-java-sdk-1.3.29.jar
+7f6d884ca000-7f6d884cc000 r--s 00001000 08:01 265479                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/launcher-interface-0.13.8.jar
+7f6d884cc000-7f6d884f1000 r--s 001f7000 08:01 265462                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/lucene-core-4.3.0.jar
+7f6d884f1000-7f6d884f9000 r--s 0005e000 08:01 265459                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/collections_2.11-0.13.8.jar
+7f6d884f9000-7f6d88509000 r--s 0016e000 08:01 265471                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/lucene-analyzers-common-4.3.0.jar
+7f6d88509000-7f6d88510000 r--s 00055000 08:01 265474                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/completion_2.11-0.13.8.jar
+7f6d88510000-7f6d88512000 r--s 00003000 08:01 265463                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/activator-ui-common-1.3.6.jar
+7f6d88512000-7f6d8851a000 r--s 0004e000 08:01 265460                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/httpclient-4.1.jar
+7f6d8851a000-7f6d88520000 r--s 0003b000 08:01 265472                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/io_2.11-0.13.8.jar
+7f6d88520000-7f6d8852b000 r--s 00096000 08:01 265480                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/scala-xml_2.11-1.0.1.jar
+7f6d8852b000-7f6d8852d000 r--s 0000d000 08:01 265469                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/commons-logging-1.1.1.jar
+7f6d8852d000-7f6d88533000 r--s 0003d000 08:01 265456                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/activator-common-1.0-a0afb008ea619bf9d87dc010156cddffa8a6f880.jar
+7f6d88533000-7f6d88535000 r--s 0000a000 08:01 265485                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/lucene-sandbox-4.3.0.jar
+7f6d88535000-7f6d8853a000 r--s 00028000 08:01 265473                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/httpcore-4.1.jar
+7f6d8853a000-7f6d8853e000 r--s 00034000 08:01 265481                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/jackson-core-asl-1.8.9.jar
+7f6d8853e000-7f6d88545000 r--s 00042000 08:01 265467                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/activator-templates-cache-1.0-a0afb008ea619bf9d87dc010156cddffa8a6f880.jar
+7f6d88545000-7f6d8856a000 r--s 0024f000 08:01 265466                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/akka-actor_2.11-2.3.9.jar
+7f6d8856a000-7f6d8856c000 r--s 0000a000 08:01 265475                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/commons-codec-1.3.jar
+7f6d8856c000-7f6d88575000 r--s 00056000 08:01 265484                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/lucene-queryparser-4.3.0.jar
+7f6d88575000-7f6d885cd000 r--s 00523000 08:01 265513                     /home/vagrant/.sbt/boot/scala-2.11.7/lib/scala-library.jar
+7f6d885cd000-7f6d886d3000 r--s 00d84000 08:01 265515                     /home/vagrant/.sbt/boot/scala-2.11.7/lib/scala-compiler.jar
+7f6d886d3000-7f6d886e4000 r-xp 00000000 08:01 267755                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f6d886e4000-7f6d888e3000 ---p 00011000 08:01 267755                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f6d888e3000-7f6d888e4000 rw-p 00010000 08:01 267755                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnio.so
+7f6d888e4000-7f6d888fa000 r-xp 00000000 08:01 267708                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f6d888fa000-7f6d88afa000 ---p 00016000 08:01 267708                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f6d88afa000-7f6d88afb000 rw-p 00016000 08:01 267708                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libnet.so
+7f6d88afb000-7f6d88afc000 ---p 00000000 00:00 0 
+7f6d88afc000-7f6d88bfc000 rw-p 00000000 00:00 0                          [stack:9866]
+7f6d88bfc000-7f6d88bff000 ---p 00000000 00:00 0 
+7f6d88bff000-7f6d88cfd000 rw-p 00000000 00:00 0                          [stack:9865]
+7f6d88cfd000-7f6d88d00000 ---p 00000000 00:00 0 
+7f6d88d00000-7f6d88dfe000 rw-p 00000000 00:00 0                          [stack:9864]
+7f6d88dfe000-7f6d88e01000 ---p 00000000 00:00 0 
+7f6d88e01000-7f6d88eff000 rw-p 00000000 00:00 0                          [stack:9863]
+7f6d88eff000-7f6d88f02000 ---p 00000000 00:00 0 
+7f6d88f02000-7f6d89000000 rw-p 00000000 00:00 0                          [stack:9862]
+7f6d89000000-7f6d8bc20000 rwxp 00000000 00:00 0 
+7f6d8bc20000-7f6d98000000 ---p 00000000 00:00 0 
+7f6d98000000-7f6d9ab70000 rw-p 00000000 00:00 0 
+7f6d9ab70000-7f6d9c000000 ---p 00000000 00:00 0 
+7f6d9c000000-7f6d9c006000 r--s 0002c000 08:01 265457                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/lucene-queries-4.3.0.jar
+7f6d9c006000-7f6d9c00a000 r--s 00014000 08:01 265465                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/xz-1.0.jar
+7f6d9c00a000-7f6d9c00d000 r--s 00030000 08:01 265477                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/jline-2.11.jar
+7f6d9c00d000-7f6d9c018000 r--s 0005c000 08:01 265483                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/scala-parser-combinators_2.11-1.0.1.jar
+7f6d9c018000-7f6d9c01b000 r--s 0001d000 08:01 265461                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/activator-launcher-1.3.6.jar
+7f6d9c01b000-7f6d9c020000 r--s 00036000 08:01 265464                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/commons-compress-1.4.1.jar
+7f6d9c020000-7f6d9c06c000 r--s 00412000 08:01 265511                     /home/vagrant/.sbt/boot/scala-2.11.7/lib/scala-reflect.jar
+7f6d9c06c000-7f6d9c088000 r--s 0010d000 08:01 265608                     /home/vagrant/example-app/activator-launch-1.3.6.jar
+7f6d9c088000-7f6d9c211000 r--p 00000000 08:01 9746                       /usr/lib/locale/locale-archive
+7f6d9c211000-7f6d9c214000 ---p 00000000 00:00 0 
+7f6d9c214000-7f6d9c312000 rw-p 00000000 00:00 0                          [stack:9861]
+7f6d9c312000-7f6d9c315000 ---p 00000000 00:00 0 
+7f6d9c315000-7f6d9c413000 rw-p 00000000 00:00 0                          [stack:9860]
+7f6d9c413000-7f6d9c414000 ---p 00000000 00:00 0 
+7f6d9c414000-7f6d9c563000 rw-p 00000000 00:00 0                          [stack:9859]
+7f6d9c563000-7f6d9c73c000 r--s 03d3e000 08:01 267899                     /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+7f6d9c73c000-7f6d9cf3c000 rw-p 00000000 00:00 0 
+7f6d9cf3c000-7f6d9d292000 rw-p 00000000 00:00 0 
+7f6d9d292000-7f6d9d344000 rw-p 00000000 00:00 0 
+7f6d9d344000-7f6d9d653000 ---p 00000000 00:00 0 
+7f6d9d653000-7f6d9d66d000 r-xp 00000000 08:01 267711                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f6d9d66d000-7f6d9d86d000 ---p 0001a000 08:01 267711                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f6d9d86d000-7f6d9d86e000 rw-p 0001a000 08:01 267711                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7f6d9d86e000-7f6d9d878000 r-xp 00000000 08:01 3276                       /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6d9d878000-7f6d9da77000 ---p 0000a000 08:01 3276                       /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6d9da77000-7f6d9da78000 r--p 00009000 08:01 3276                       /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6d9da78000-7f6d9da79000 rw-p 0000a000 08:01 3276                       /lib/x86_64-linux-gnu/libnss_files-2.19.so
+7f6d9da79000-7f6d9da84000 r-xp 00000000 08:01 3411                       /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6d9da84000-7f6d9dc83000 ---p 0000b000 08:01 3411                       /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6d9dc83000-7f6d9dc84000 r--p 0000a000 08:01 3411                       /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6d9dc84000-7f6d9dc85000 rw-p 0000b000 08:01 3411                       /lib/x86_64-linux-gnu/libnss_nis-2.19.so
+7f6d9dc85000-7f6d9dc9c000 r-xp 00000000 08:01 3250                       /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f6d9dc9c000-7f6d9de9b000 ---p 00017000 08:01 3250                       /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f6d9de9b000-7f6d9de9c000 r--p 00016000 08:01 3250                       /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f6d9de9c000-7f6d9de9d000 rw-p 00017000 08:01 3250                       /lib/x86_64-linux-gnu/libnsl-2.19.so
+7f6d9de9d000-7f6d9de9f000 rw-p 00000000 00:00 0 
+7f6d9de9f000-7f6d9dea8000 r-xp 00000000 08:01 3247                       /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6d9dea8000-7f6d9e0a7000 ---p 00009000 08:01 3247                       /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6d9e0a7000-7f6d9e0a8000 r--p 00008000 08:01 3247                       /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6d9e0a8000-7f6d9e0a9000 rw-p 00009000 08:01 3247                       /lib/x86_64-linux-gnu/libnss_compat-2.19.so
+7f6d9e0a9000-7f6d9e0d4000 r-xp 00000000 08:01 267715                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f6d9e0d4000-7f6d9e2d3000 ---p 0002b000 08:01 267715                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f6d9e2d3000-7f6d9e2d5000 rw-p 0002a000 08:01 267715                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7f6d9e2d5000-7f6d9e2e2000 r-xp 00000000 08:01 267705                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f6d9e2e2000-7f6d9e4e1000 ---p 0000d000 08:01 267705                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f6d9e4e1000-7f6d9e4e3000 rw-p 0000c000 08:01 267705                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7f6d9e4e3000-7f6d9e4ea000 r-xp 00000000 08:01 3204                       /lib/x86_64-linux-gnu/librt-2.19.so
+7f6d9e4ea000-7f6d9e6e9000 ---p 00007000 08:01 3204                       /lib/x86_64-linux-gnu/librt-2.19.so
+7f6d9e6e9000-7f6d9e6ea000 r--p 00006000 08:01 3204                       /lib/x86_64-linux-gnu/librt-2.19.so
+7f6d9e6ea000-7f6d9e6eb000 rw-p 00007000 08:01 3204                       /lib/x86_64-linux-gnu/librt-2.19.so
+7f6d9e6eb000-7f6d9e7f0000 r-xp 00000000 08:01 3213                       /lib/x86_64-linux-gnu/libm-2.19.so
+7f6d9e7f0000-7f6d9e9ef000 ---p 00105000 08:01 3213                       /lib/x86_64-linux-gnu/libm-2.19.so
+7f6d9e9ef000-7f6d9e9f0000 r--p 00104000 08:01 3213                       /lib/x86_64-linux-gnu/libm-2.19.so
+7f6d9e9f0000-7f6d9e9f1000 rw-p 00105000 08:01 3213                       /lib/x86_64-linux-gnu/libm-2.19.so
+7f6d9e9f1000-7f6d9f6bf000 r-xp 00000000 08:01 267746                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f6d9f6bf000-7f6d9f8bf000 ---p 00cce000 08:01 267746                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f6d9f8bf000-7f6d9f998000 rw-p 00cce000 08:01 267746                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7f6d9f998000-7f6d9f9e3000 rw-p 00000000 00:00 0 
+7f6d9f9e3000-7f6d9fba1000 r-xp 00000000 08:01 3361                       /lib/x86_64-linux-gnu/libc-2.19.so
+7f6d9fba1000-7f6d9fda0000 ---p 001be000 08:01 3361                       /lib/x86_64-linux-gnu/libc-2.19.so
+7f6d9fda0000-7f6d9fda4000 r--p 001bd000 08:01 3361                       /lib/x86_64-linux-gnu/libc-2.19.so
+7f6d9fda4000-7f6d9fda6000 rw-p 001c1000 08:01 3361                       /lib/x86_64-linux-gnu/libc-2.19.so
+7f6d9fda6000-7f6d9fdab000 rw-p 00000000 00:00 0 
+7f6d9fdab000-7f6d9fdae000 r-xp 00000000 08:01 3306                       /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6d9fdae000-7f6d9ffad000 ---p 00003000 08:01 3306                       /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6d9ffad000-7f6d9ffae000 r--p 00002000 08:01 3306                       /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6d9ffae000-7f6d9ffaf000 rw-p 00003000 08:01 3306                       /lib/x86_64-linux-gnu/libdl-2.19.so
+7f6d9ffaf000-7f6d9ffc4000 r-xp 00000000 08:01 267760                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f6d9ffc4000-7f6da01c4000 ---p 00015000 08:01 267760                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f6da01c4000-7f6da01c5000 rw-p 00015000 08:01 267760                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7f6da01c5000-7f6da01de000 r-xp 00000000 08:01 3308                       /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6da01de000-7f6da03dd000 ---p 00019000 08:01 3308                       /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6da03dd000-7f6da03de000 r--p 00018000 08:01 3308                       /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6da03de000-7f6da03df000 rw-p 00019000 08:01 3308                       /lib/x86_64-linux-gnu/libpthread-2.19.so
+7f6da03df000-7f6da03e3000 rw-p 00000000 00:00 0 
+7f6da03e3000-7f6da0406000 r-xp 00000000 08:01 3211                       /lib/x86_64-linux-gnu/ld-2.19.so
+7f6da0406000-7f6da0407000 r--s 00001000 08:01 265478                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/activator-props-1.3.6.jar
+7f6da0407000-7f6da0412000 r--s 0005d000 08:01 265514                     /home/vagrant/.sbt/boot/scala-2.11.7/lib/scala-parser-combinators_2.11.jar
+7f6da0412000-7f6da041d000 r--s 00094000 08:01 265516                     /home/vagrant/.sbt/boot/scala-2.11.7/lib/scala-xml_2.11.jar
+7f6da041d000-7f6da04ee000 rw-p 00000000 00:00 0 
+7f6da04ee000-7f6da04f6000 rw-s 00000000 08:01 265183                     /tmp/hsperfdata_vagrant/9817
+7f6da04f6000-7f6da04f9000 ---p 00000000 00:00 0 
+7f6da04f9000-7f6da05fb000 rw-p 00000000 00:00 0                          [stack:9858]
+7f6da05fb000-7f6da05fd000 r--s 00002000 08:01 265470                     /home/vagrant/.sbt/boot/scala-2.11.7/com.typesafe.activator/activator-launcher/1.3.6/control_2.11-0.13.8.jar
+7f6da05fd000-7f6da0601000 r--s 00031000 08:01 265512                     /home/vagrant/.sbt/boot/scala-2.11.7/lib/jline.jar
+7f6da0601000-7f6da0602000 rw-p 00000000 00:00 0 
+7f6da0602000-7f6da0603000 r--p 00000000 00:00 0 
+7f6da0603000-7f6da0605000 rw-p 00000000 00:00 0 
+7f6da0605000-7f6da0606000 r--p 00022000 08:01 3211                       /lib/x86_64-linux-gnu/ld-2.19.so
+7f6da0606000-7f6da0607000 rw-p 00023000 08:01 3211                       /lib/x86_64-linux-gnu/ld-2.19.so
+7f6da0607000-7f6da0608000 rw-p 00000000 00:00 0 
+7fffc9268000-7fffc9289000 rw-p 00000000 00:00 0                          [stack]
+7fffc9339000-7fffc933b000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dactivator.home=/home/vagrant/example-app -Xms1024m -Xmx1024m -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=256m 
+java_command: /home/vagrant/example-app/activator-launch-1.3.6.jar run
+java_class_path (initial): /home/vagrant/example-app/activator-launch-1.3.6.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/vagrant/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xac78c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xac78c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x920ac0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x922300], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x923700], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=14.04
+DISTRIB_CODENAME=trusty
+DISTRIB_DESCRIPTION="Ubuntu 14.04.5 LTS"
+
+uname:Linux 3.13.0-116-generic #163-Ubuntu SMP Fri Mar 31 14:13:22 UTC 2017 x86_64
+libc:glibc 2.19 NPTL 2.19 
+rlimit: STACK 8192k, CORE 0k, NPROC 7872, NOFILE 4096, AS infinity
+load average:0.31 0.15 0.09
+
+/proc/meminfo:
+MemTotal:        1017664 kB
+MemFree:           58668 kB
+Buffers:             236 kB
+Cached:             5236 kB
+SwapCached:            0 kB
+Active:           914028 kB
+Inactive:           4804 kB
+Active(anon):     913544 kB
+Inactive(anon):      572 kB
+Active(file):        484 kB
+Inactive(file):     4232 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               116 kB
+Writeback:             0 kB
+AnonPages:        913428 kB
+Mapped:             1148 kB
+Shmem:               688 kB
+Slab:              21188 kB
+SReclaimable:      11248 kB
+SUnreclaim:         9940 kB
+KernelStack:        1136 kB
+PageTables:         4824 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:      508832 kB
+Committed_AS:    1433988 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:        8488 kB
+VmallocChunk:   34359724540 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:    571392 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       34752 kB
+DirectMap2M:     1013760 kB
+
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x19
+cpu MHz		: 2893.405
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx rdrand lahf_lm
+bogomips	: 5786.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x19
+cpu MHz		: 2893.405
+cache size	: 4096 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc pni pclmulqdq ssse3 cx16 sse4_1 sse4_2 popcnt aes xsave avx rdrand lahf_lm
+bogomips	: 5786.81
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 1017664k(58668k free), swap 0k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.121-b13) for linux-amd64 JRE (1.8.0_121-b13), built on Dec 12 2016 16:36:53 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Tue Apr 11 23:58:04 2017
+elapsed time: 2488 seconds (0d 0h 41m 28s)
+
