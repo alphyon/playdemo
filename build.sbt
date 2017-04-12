@@ -11,3 +11,8 @@ libraryDependencies ++= Seq(
   cache,
   javaWs
 )
+
+enablePlugins(DebianPlugin)
+maintainer := "Jose A Chavarria <alphyon21@gmail.com>"
+packageSummary := "packageCIDevops"
+packageDescription := "Paquete de prueba de uso de CI"
